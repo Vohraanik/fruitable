@@ -14,8 +14,8 @@ function Home(props) {
     margin: 25,
     nav: true,
     navText: [
-      '   <i class="bi bi-arrow-left"></i>',
-      '    <i class="bi bi-arrow-right"></i>'
+      '<div class="owl-prev"><i class="bi bi-arrow-left"></i></div>',
+      '<div class="owl-prev"><i class="bi bi-arrow-right"></i></div>'
    ],
     responsiveClass: true,
     responsive: {
@@ -46,8 +46,8 @@ function Home(props) {
     margin: 25,
     nav: true,
     navText: [
-   '   <i class="bi bi-arrow-left"></i>',
-  '    <i class="bi bi-arrow-right"></i>'
+      '<div class="owl-prev"><i class="bi bi-arrow-left"></i></div>',
+      '<div class="owl-prev"><i class="bi bi-arrow-right"></i></div>'
     ],
   
     responsiveClass: true,

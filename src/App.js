@@ -1,15 +1,19 @@
 import React from "react";
-import Headers from "./user/component/Header/Header";
-import Footer from "./user/component/Footer/Footer";
-import Home from "./user/container/Home/Home";
+import { Route, Routes } from "react-router-dom";
+import UserRoute from "./routes/UserRoute";
+import AdminRoute from "./routes/AdminRoute";
+
+
 
 function App() {
   return (
-<>
-<Headers />
-<Home />
-<Footer />
-</>
+    <>
+    <Routes>
+      <Route exect path="/*" element={<UserRoute />} />
+      <Route exect path="/admin/*" element={<AdminRoute/>}/>
+    </Routes>
+    </>
+
   );
 }
 

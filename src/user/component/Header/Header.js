@@ -1,8 +1,10 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 function Header(props) {
     return (
     <div>
+      
   {/* Spinner Start */}
   {/* <div id="spinner" className="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
     <div className="spinner-grow text-primary" role="status" />
@@ -31,19 +33,19 @@ function Header(props) {
         </button>
         <div className="collapse navbar-collapse bg-white" id="navbarCollapse">
           <div className="navbar-nav mx-auto">
-            <a href="index.html" className="nav-item nav-link active">Home</a>
-            <a href="shop.html" className="nav-item nav-link">Shop</a>
-            <a href="shop-detail.html" className="nav-item nav-link">Shop Detail</a>
+            <NavLink to={"/"} className="nav-item nav-link active">Home</NavLink>
+            <NavLink to={"/shop"} className="nav-item nav-link">Shop</NavLink>
+            <NavLink to={"/shop-detail"} className="nav-item nav-link">Shop Detail</NavLink>
             <div className="nav-item dropdown">
               <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
               <div className="dropdown-menu m-0 bg-secondary rounded-0">
-                <a href="cart.html" className="dropdown-item">Cart</a>
-                <a href="chackout.html" className="dropdown-item">Chackout</a>
-                <a href="testimonial.html" className="dropdown-item">Testimonial</a>
-                <a href="404.html" className="dropdown-item">404 Page</a>
+                <NavLink to={"/cart"} className="dropdown-item">Cart</NavLink>
+                <NavLink to={"/checkout"} className="dropdown-item">Chackout</NavLink>
+                <NavLink to={"/testimonial"} className="dropdown-item">Testimonial</NavLink>
+                <NavLink to={"/error"} className="dropdown-item">404 Page</NavLink>
               </div>
             </div>
-            <a href="contact.html" className="nav-item nav-link">Contact</a>
+            <NavLink to={"/contact"} className="nav-item nav-link">Contact</NavLink>
           </div>
           <div className="d-flex m-3 me-0">
             <button className="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i className="fas fa-search text-primary" /></button>
