@@ -477,7 +477,9 @@
     border-bottom: 2px solid var(--bs-secondary) !important;
 }
 /*** Single Page End ***/
-
+.error{
+    color: red;
+}
 
 /*** Footer Start ***/
 .footer .footer-item .btn-link {
