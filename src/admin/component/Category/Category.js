@@ -10,10 +10,13 @@ import { useFormik } from 'formik';
 import { object, string } from 'yup';
 import { DataGrid } from '@mui/x-data-grid';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 function Category(props) {
 
     const [data, setData] = useState([]);
+    const [edit, setEdit] = useState(null);
+    console.log(edit);
 
     const getData = () => {
         const localData = JSON.parse(localStorage.getItem("category"));
@@ -57,6 +60,24 @@ function Category(props) {
         getData();
     }
 
+
+    const handleEdit =(data)=>{
+        formik.setValues(data);
+        setEdit(data);
+        handleClickOpen();
+
+    }
+
+    const handleUpdate =(data)=>{
+        let localData = JSON.parse(localStorage.getItem("category"));
+        let index = localData.findIndex(item=>item.id === data.id);
+        localData[index] = data;
+        localStorage.setItem("category", JSON.stringify(localData));
+        getData();
+    }
+
+ 
+
     const formik = useFormik({
         initialValues: {
             category: '',
@@ -64,7 +85,12 @@ function Category(props) {
         },
         validationSchema: categorySchema,
         onSubmit: async (values, { resetForm }) => {
-            handleAdd(values);
+            if(edit){
+                handleUpdate(values)
+            }else{
+                handleAdd(values)
+            }
+    
             resetForm();
             handleClose();
         }
@@ -83,6 +109,8 @@ function Category(props) {
 
     const handleClose = () => {
         setOpen(false);
+        setEdit(null);
+        formik.resetForm();
 
     };
     const columns = [
@@ -110,6 +138,22 @@ function Category(props) {
               
                 </Button>
             ),
+          },
+          {
+            field: 'edit',
+            headerName: 'Edit',
+            width: 100,
+            renderCell: (params) => (
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    onClick={()=>handleEdit(params.row)}
+                    startIcon={<EditIcon />}
+                >
+              
+                </Button>
+            ),
+
           }
     ]
 
@@ -164,7 +208,7 @@ function Category(props) {
                         </DialogContent>
                         <DialogActions>
                             <Button onClick={handleClose}>Cancel</Button>
-                            <Button type="submit">Add</Button>
+                            <Button type="submit">{edit ? "Update" : "Add" }</Button>
                         </DialogActions>
                     </form>
                 </Dialog>
