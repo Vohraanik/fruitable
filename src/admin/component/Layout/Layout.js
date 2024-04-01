@@ -20,6 +20,9 @@ import { NavLink } from 'react-router-dom';
 import AppleIcon from '@mui/icons-material/Apple';
 import BakeryDiningIcon from '@mui/icons-material/BakeryDining';
 import CategoryIcon from '@mui/icons-material/Category';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+
+
 const drawerWidth = 240;
 
 function Layout(props) {
@@ -27,7 +30,10 @@ function Layout(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
 
-  const adminLink = [{tittle: 'Fruits', to:'/admin/fruits',icon: <AppleIcon />}, {tittle: 'Vegetable', to: '/admin/vegetables',icon: <BakeryDiningIcon />}, {tittle: 'Category', to: '/admin/category',icon: <CategoryIcon />}];
+  const adminLink = [{tittle: 'Fruits', to:'/admin/fruits',icon: <AppleIcon />}, 
+  {tittle: 'Vegetable', to: '/admin/vegetables',icon: <BakeryDiningIcon />},
+   {tittle: 'Category', to: '/admin/category',icon: <CategoryIcon />},
+   {tittle: 'Facilities', to: '/admin/facilities',icon: <AddShoppingCartIcon />}];
   const handleDrawerClose = () => {
     setIsClosing(true);
     setMobileOpen(false);

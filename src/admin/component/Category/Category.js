@@ -53,30 +53,30 @@ function Category(props) {
         getData();
     }
 
-    const handleDelete = (id)=>{
+    const handleDelete = (id) => {
         let localData = JSON.parse(localStorage.getItem("category"));
-        localData = localData.filter(item=>item.id !== id);
+        localData = localData.filter(item => item.id !== id);
         localStorage.setItem("category", JSON.stringify(localData));
         getData();
     }
 
 
-    const handleEdit =(data)=>{
+    const handleEdit = (data) => {
         formik.setValues(data);
         setEdit(data);
         handleClickOpen();
 
     }
 
-    const handleUpdate =(data)=>{
+    const handleUpdate = (data) => {
         let localData = JSON.parse(localStorage.getItem("category"));
-        let index = localData.findIndex(item=>item.id === data.id);
+        let index = localData.findIndex(item => item.id === data.id);
         localData[index] = data;
         localStorage.setItem("category", JSON.stringify(localData));
         getData();
     }
 
- 
+
 
     const formik = useFormik({
         initialValues: {
@@ -85,12 +85,12 @@ function Category(props) {
         },
         validationSchema: categorySchema,
         onSubmit: async (values, { resetForm }) => {
-            if(edit){
+            if (edit) {
                 handleUpdate(values)
-            }else{
+            } else {
                 handleAdd(values)
             }
-    
+
             resetForm();
             handleClose();
         }
@@ -135,11 +135,11 @@ function Category(props) {
                     onClick={() => handleDelete(params.row.id)}
                     startIcon={<DeleteIcon />}
                 >
-              
+
                 </Button>
             ),
-          },
-          {
+        },
+        {
             field: 'edit',
             headerName: 'Edit',
             width: 100,
@@ -147,87 +147,86 @@ function Category(props) {
                 <Button
                     variant="outlined"
                     color="primary"
-                    onClick={()=>handleEdit(params.row)}
+                    onClick={() => handleEdit(params.row)}
                     startIcon={<EditIcon />}
                 >
-              
+
                 </Button>
             ),
 
-          }
+        }
     ]
 
 
 
-
-
-
     return (
-        <div>
-            <h1>Category Page</h1>
-            <React.Fragment>
-                <Button variant="outlined" onClick={handleClickOpen}>
-                    Add Category
-                </Button>
-                <Dialog
-                    open={open}
-                    onClose={handleClose}
+        <>
+            <div>
+                <h1>Category Page</h1>
+                <React.Fragment>
+                    <Button variant="outlined" onClick={handleClickOpen}>
+                        Add Category
+                    </Button>
+                    <Dialog
+                        open={open}
+                        onClose={handleClose}
 
-                >
-                    <form onSubmit={handleSubmit}>
-                        <DialogTitle>Category</DialogTitle>
-                        <DialogContent>
-                            <TextField
-                                margin="dense"
-                                id="category"
-                                name="category"
-                                label="Category Name"
-                                type="text"
-                                fullWidth
-                                variant="standard"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.category}
-                                error={errors.category && touched.category ? errors.category : false}
-                                helperText={errors.category && touched.category ? errors.category : ''}
-                            />
-                            <TextField
-                                margin="dense"
-                                id="description"
-                                name="description"
-                                label="Description"
-                                type="text"
-                                fullWidth
-                                variant="standard"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.description}
-                                error={errors.description && touched.description ? errors.description : false}
-                                helperText={errors.description && touched.description ? errors.description : ''}
-                            />
-                        </DialogContent>
-                        <DialogActions>
-                            <Button onClick={handleClose}>Cancel</Button>
-                            <Button type="submit">{edit ? "Update" : "Add" }</Button>
-                        </DialogActions>
-                    </form>
-                </Dialog>
-            </React.Fragment>
+                    >
+                        <form onSubmit={handleSubmit}>
+                            <DialogTitle>Category</DialogTitle>
+                            <DialogContent>
+                                <TextField
+                                    margin="dense"
+                                    id="category"
+                                    name="category"
+                                    label="Category Name"
+                                    type="text"
+                                    fullWidth
+                                    variant="standard"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.category}
+                                    error={errors.category && touched.category ? errors.category : false}
+                                    helperText={errors.category && touched.category ? errors.category : ''}
+                                />
+                                <TextField
+                                    margin="dense"
+                                    id="description"
+                                    name="description"
+                                    label="Description"
+                                    type="text"
+                                    fullWidth
+                                    variant="standard"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.description}
+                                    error={errors.description && touched.description ? errors.description : false}
+                                    helperText={errors.description && touched.description ? errors.description : ''}
+                                />
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={handleClose}>Cancel</Button>
+                                <Button type="submit">{edit ? "Update" : "Add"}</Button>
+                            </DialogActions>
+                        </form>
+                    </Dialog>
+                </React.Fragment>
 
-            <div style={{ height: 400, width: '100%' }}>
-                <DataGrid
-                    rows={data}
-                    columns={columns}
-                    initialState={{
-                        pagination: {
-                            paginationModel: { page: 0, pageSize: 5 },
-                        },
-                    }}
-                    pageSizeOptions={[5, 10]}
-                    checkboxSelection
-                />
+                <div style={{ height: 400, width: '100%' }}>
+                    <DataGrid
+                        rows={data}
+                        columns={columns}
+                        initialState={{
+                            pagination: {
+                                paginationModel: { page: 0, pageSize: 5 },
+                            },
+                        }}
+                        pageSizeOptions={[5, 10]}
+                        checkboxSelection
+                    />
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 
