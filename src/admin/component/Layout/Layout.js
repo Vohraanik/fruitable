@@ -1,3 +1,4 @@
+// Layout.js
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
@@ -22,7 +23,6 @@ import BakeryDiningIcon from '@mui/icons-material/BakeryDining';
 import CategoryIcon from '@mui/icons-material/Category';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
-
 const drawerWidth = 240;
 
 function Layout(props) {
@@ -30,10 +30,14 @@ function Layout(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
 
-  const adminLink = [{tittle: 'Fruits', to:'/admin/fruits',icon: <AppleIcon />}, 
-  {tittle: 'Vegetable', to: '/admin/vegetables',icon: <BakeryDiningIcon />},
-   {tittle: 'Category', to: '/admin/category',icon: <CategoryIcon />},
-   {tittle: 'Facilities', to: '/admin/facilities',icon: <AddShoppingCartIcon />}];
+  const adminLink = [
+    { title: 'Fruits', to:'/admin/fruits', icon: <AppleIcon />}, 
+    { title: 'Vegetable', to: '/admin/vegetables', icon: <BakeryDiningIcon />},
+    { title: 'Category', to: '/admin/category', icon: <CategoryIcon />},
+    { title: 'Facilities', to: '/admin/facilities', icon: <AddShoppingCartIcon />},
+    { title: 'Organic', to: '/admin/organic', icon: <AddShoppingCartIcon />},
+  ];
+
   const handleDrawerClose = () => {
     setIsClosing(true);
     setMobileOpen(false);
@@ -49,36 +53,31 @@ function Layout(props) {
     }
   };
 
-  
-
   const drawer = (
     <div>
       <Toolbar />
       <Divider />
       <List>
         {adminLink.map((text, index) => (
-          <ListItem key={text}
-           disablePadding 
-           component={NavLink}
-           to={`${text.to}`}
-           
+          <ListItem 
+            key={text.title}
+            disablePadding 
+            component={NavLink}
+            to={`${text.to}`}
           >
             <ListItemButton>
               <ListItemIcon>
                 {text.icon}
               </ListItemIcon>
-              <ListItemText primary={text.tittle} />
+              <ListItemText primary={text.title} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
       <Divider />
-   
     </div>
   );
 
-
-  // Remove this const when copying and pasting into your project.
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
@@ -111,7 +110,6 @@ function Layout(props) {
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
           container={container}
           variant="temporary"
@@ -119,7 +117,7 @@ function Layout(props) {
           onTransitionEnd={handleDrawerTransitionEnd}
           onClose={handleDrawerClose}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true, 
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
@@ -144,17 +142,13 @@ function Layout(props) {
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
-     {props.children}
+        {props.children}
       </Box>
     </Box>
   );
 }
 
 Layout.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * Remove this when copying and pasting into your project.
-   */
   window: PropTypes.func,
 };
 

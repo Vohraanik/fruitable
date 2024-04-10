@@ -1,11 +1,23 @@
-import { ADD_FACILITIES, DELETE_FACILITIES, UPDATE_FACILITIES } from "../ActionType"
+import { ADD_FACILITIES, DELETE_FACILITIES,GET_FACILITIES,LOADING_FACILITIES,UPDATE_FACILITIES } from "../ActionType"
+
+
+export const setLoading = () => (dispatch) =>{
+    dispatch({ type:LOADING_FACILITIES})
+}
+
+export const getFacilities = () => (dispatch) =>{
+    dispatch({type:GET_FACILITIES})
+}
 
 export const addFacilities =(data) => (dispatch) =>{
+    dispatch(setLoading())
+    setTimeout(()=>[
+        dispatch({
+            type: ADD_FACILITIES,
+            payload: data
+        })
+    ],2000)
 
-    dispatch({
-        type: ADD_FACILITIES,
-        payload: data
-    })
 }
 
 export const deleteFacilities =(id) => (dispatch) =>{
@@ -21,3 +33,5 @@ export const editFacilities =(data) => (dispatch) =>{
         payload: data
     })
 }
+
+

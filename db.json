@@ -1,86 +1,17 @@
 {
-    "fruits": [
-       {
-          "id": 1,
-          "imgSrc": "img/fruite-item-5.jpg",
-          "category": "Fruits",
-          "name": "Grapes",
-          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-          "price": "9.99 ",
-          "type":"organic"
-       },
-       {
-          "id": 2,
-          "imgSrc": "img/fruite-item-5.jpg",
-          "category": "Fruits",
-          "name": "Grapes",
-          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-          "price": "4.99 ",
-          "type":"organic"
-       },
-       {
-          "id": 3,
-          "imgSrc": "img/fruite-item-2.jpg",
-          "category": "Fruits",
-          "name": "Raspberries",
-          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-          "price": "$2.99 ",
-          "type":"organic"
-       },
-       {
-          "id": 4,
-          "imgSrc": "img/fruite-item-4.jpg",
-          "category": "Fruits",
-          "name": "Apricots",
-          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-          "price": "5.99 ",
-          "type":"expired"
-       },
-       {
-          "id": 5,
-          "imgSrc": "img/fruite-item-3.jpg",
-          "category": "Fruits",
-          "name": "Banana",
-          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-          "price": "3.99 ",
-          "type":"fresh"
-       },
-       {
-          "id": 6,
-          "imgSrc": "img/fruite-item-1.jpg",
-          "category": "Fruits",
-          "name": "Oranges",
-          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-          "price": "9.99 ",
-          "type":"fresh"
-       },
-       {
-          "id": 7,
-          "imgSrc": "img/fruite-item-2.jpg",
-          "category": "Fruits",
-          "name": "Raspberries",
-          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-          "price": "2.99 ",
-          "type":"sales"
-       },
-       {
-          "id": 8,
-          "imgSrc": "img/fruite-item-5.jpg",
-          "category": "Fruits",
-          "name": "Grapes",
-          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-          "price": "3.99 ",
-          "type":"sales"
-       },
-       {
-          "id": 9,
-          "imgSrc": "img/fruite-item-1.jpg",
-          "category": "Fruits",
-          "name": "Oranges",
-          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-          "price": "7.99 ",
-          "type":"discount"
-       }
-    ]
- }
- 
+  "fruits": [
+    {
+      "id": "77ef",
+      "name": "anik vohra",
+      "description": "adas",
+      "price": "00"
+    },
+    {
+      "id": "4613",
+      "name": "www",
+      "description": "ww",
+      "price": "100"
+    }
+  ],
+  "facilities": []
+}

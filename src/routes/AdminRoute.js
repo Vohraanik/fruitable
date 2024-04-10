@@ -8,13 +8,16 @@ import PrivateRoute from './PrivateRoute';
 import Facilities from '../admin/component/Facilities/Facilities';
 import { configureStore } from '../redux/Store';
 import { Provider } from 'react-redux';
+import  persistor  from '../redux/Store';
+import { PersistGate } from 'redux-persist/integration/react';
+import Organic from '../admin/component/Organic/Organic';
 
 
 function AdminRoute(props) {
-    const store = configureStore();
+
     return (
         <div>
-            <Provider store={store}>
+            
             <Layout>
                 <Routes >
                     <Route element={<PrivateRoute />}>
@@ -22,12 +25,16 @@ function AdminRoute(props) {
                     <Route exact path = "/vegetables" element = {<Vegetables />} />
                     <Route exact path='/category' element={<Category />} />
                     <Route exact path='/facilities' element={<Facilities />} />
+                    <Route exact path='/organic' element={<Organic />} />
                     </Route>
                 </Routes>
             </Layout>
+         
+ 
+       
    
 
-            </Provider>
+    
            
 
 
