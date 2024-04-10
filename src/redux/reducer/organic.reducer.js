@@ -8,7 +8,7 @@ const initialState = {
 };
 
 export const organicReducer = (state = initialState, action) => {
-    console.log(action);
+
     switch (action.type) {
         case GET_ORGANIC:
             return {

@@ -17,7 +17,7 @@ function Shop(props) {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:3000/fruits");
+      const response = await fetch("http://localhost:8000/fruits");
       const data = await response.json();
       setProductData(data)
 

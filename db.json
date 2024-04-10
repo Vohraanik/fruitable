@@ -1,17 +1,115 @@
 {
   "fruits": [
     {
-      "id": "77ef",
-      "name": "anik vohra",
-      "description": "adas",
-      "price": "00"
+      "id": "2",
+      "imgSrc": "img/fruite-item-5.jpg",
+      "category": "Fruits",
+      "name": "Grapes",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "$4.99 / kg"
     },
     {
-      "id": "4613",
-      "name": "www",
-      "description": "ww",
-      "price": "100"
+      "id": "3",
+      "imgSrc": "img/fruite-item-2.jpg",
+      "category": "Fruits",
+      "name": "Raspberries",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "$4.99 / kg"
+    },
+    {
+      "id": "4",
+      "imgSrc": "img/fruite-item-4.jpg",
+      "category": "Fruits",
+      "name": "Apricots",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "$4.99 / kg"
+    },
+    {
+      "id": "5",
+      "imgSrc": "img/fruite-item-3.jpg",
+      "category": "Fruits",
+      "name": "Banana",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "$4.99 / kg"
+    },
+    {
+      "id": "6",
+      "imgSrc": "img/fruite-item-1.jpg",
+      "category": "Fruits",
+      "name": "Oranges",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "$4.99 / kg"
+    },
+    {
+      "id": "7",
+      "imgSrc": "img/fruite-item-2.jpg",
+      "category": "Fruits",
+      "name": "Raspberries",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "$4.99 / kg"
+    },
+    {
+      "id": "8",
+      "imgSrc": "img/fruite-item-5.jpg",
+      "category": "Fruits",
+      "name": "Grapes",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "$4.99 / kg"
+    },
+    {
+      "id": "9",
+      "imgSrc": "img/fruite-item-1.jpg",
+      "category": "Fruits",
+      "name": "Oranges",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "$4.99 / kg"
     }
   ],
-  "facilities": []
+  "facilities": [],
+  "reviews": [
+    {
+      "id": "f48f",
+      "name": "anik",
+      "email": "anikvohra3@gmail.com",
+      "review": "its is best",
+      "rating": "4",
+      "productId": "8"
+    },
+    {
+      "id": "ed05",
+      "name": "anik",
+      "email": "anikvohra3@gmail.com",
+      "review": "its is best",
+      "rating": "2.5",
+      "productId": "8"
+    },
+    {
+      "id": "7122",
+      "name": "anik",
+      "email": "anikvohra3@gmail.com",
+      "review": "it is best",
+      "rating": "3.5"
+    },
+    {
+      "id": "fc35",
+      "name": "yusuf",
+      "email": "yusuf@gmail.com",
+      "review": "it is best",
+      "rating": "3.5"
+    },
+    {
+      "id": "3fb7",
+      "name": "us",
+      "email": "ayaz@gmail.com",
+      "review": "it is best",
+      "rating": "3.5"
+    },
+    {
+      "id": "f7d8",
+      "name": "a",
+      "email": "ayaz@gmail.com",
+      "review": "it is best",
+      "rating": "3"
+    }
+  ]
 }
