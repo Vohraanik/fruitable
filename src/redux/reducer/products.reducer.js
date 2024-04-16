@@ -1,49 +1,50 @@
-import { ADD_ORGANIC, DELETE_ORGANIC, EDIT_ORGANIC, ERROR_ORGANIC, GET_ORGANIC, LOADING_ORGANIC,} from '../ActionType';
+import {  ADD_PRODUCTS,  DELETE_PRODUCTS, EDIT_PRODUCTS, ERROR_ORGANIC, ERROR_PRODUCTS, GET_ORGANIC, GET_PRODUCTS, LOADING_PRODUCTS,} from '../ActionType';
 
 const initialState = {
     isLoading: false,
-    organic: [],
+    products: [],
     error: null
 };
 
-export const organicReducer = (state = initialState, action) => {
+export const productsReducer = (state = initialState, action) => {
+    console.log(action);
     switch (action.type) {
 
-        case LOADING_ORGANIC:
+        case LOADING_PRODUCTS:
             return {
                 ...state,
                 isLoading: true
             };
 
-        case ERROR_ORGANIC:
+        case ERROR_PRODUCTS:
             return {
                 ...state,
                 isLoading: false,
                 error: action.payload
             }    
 
-        case GET_ORGANIC:
+        case GET_PRODUCTS:
             return {
                 isLoading: false,
-                organic: action.payload,
+                products: action.payload,
                 error: null
             };
-        case ADD_ORGANIC:
+        case ADD_PRODUCTS:
             return {
                 isLoading: false,
-                organic: state.organic.concat(action.payload),
+                products: state.products.concat(action.payload),
                 error: null
             };
-        case DELETE_ORGANIC:
+        case DELETE_PRODUCTS:
             return {
                 isLoading: false,
-                organic: state.organic.filter((v) => v.id !== action.payload),
+                products: state.products.filter((v) => v.id !== action.payload),
                 error: null
             };
-        case EDIT_ORGANIC:
+        case EDIT_PRODUCTS:
             return {
                 isLoading: false,
-                organic: state.organic.map((v) => {
+                products: state.products.map((v) => {
                     if (v.id === action.payload.id) {
                         return action.payload;
                     } else {

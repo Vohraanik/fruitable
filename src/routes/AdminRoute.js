@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 import  persistor  from '../redux/Store';
 import { PersistGate } from 'redux-persist/integration/react';
 import Organic from '../admin/component/Organic/Organic';
+import Products from '../admin/component/Products/Products';
 
 
 function AdminRoute(props) {
@@ -26,6 +27,7 @@ function AdminRoute(props) {
                     <Route exact path='/category' element={<Category />} />
                     <Route exact path='/facilities' element={<Facilities />} />
                     <Route exact path='/organic' element={<Organic />} />
+                    <Route exsact path='/products' element={<Products />} />
                     </Route>
                 </Routes>
             </Layout>

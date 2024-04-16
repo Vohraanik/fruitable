@@ -22,6 +22,8 @@ import AppleIcon from '@mui/icons-material/Apple';
 import BakeryDiningIcon from '@mui/icons-material/BakeryDining';
 import CategoryIcon from '@mui/icons-material/Category';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import AgricultureIcon from '@mui/icons-material/Agriculture';
 
 const drawerWidth = 240;
 
@@ -35,7 +37,8 @@ function Layout(props) {
     { title: 'Vegetable', to: '/admin/vegetables', icon: <BakeryDiningIcon />},
     { title: 'Category', to: '/admin/category', icon: <CategoryIcon />},
     { title: 'Facilities', to: '/admin/facilities', icon: <AddShoppingCartIcon />},
-    { title: 'Organic', to: '/admin/organic', icon: <AddShoppingCartIcon />},
+    { title: 'Organic', to: '/admin/organic', icon: <AgricultureIcon />},
+    { title: 'Products', to: '/admin/products', icon: <AccountBalanceWalletIcon />},
   ];
 
   const handleDrawerClose = () => {

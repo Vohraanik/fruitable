@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export const shopDetailReducer = (state = initialState, action) => {
-    console.log(action);
+
     switch (action.type) {
         case GET_REVIEW:   
             return {

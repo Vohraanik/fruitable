@@ -1,13 +1,19 @@
 {
-  "fruits": [
+  "products": [
     {
-      "id": "2",
-      "imgSrc": "img/fruite-item-5.jpg",
-      "category": "Fruits",
-      "name": "Grapes",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "$4.99 / kg"
+      "id": "7f6e",
+      "name": "Anik VOHRA",
+      "description": "boss",
+      "price": "122"
     },
+    {
+      "id": "c287",
+      "name": "qw",
+      "description": "qwq",
+      "price": "34"
+    }
+  ],
+  "fruits": [
     {
       "id": "3",
       "imgSrc": "img/fruite-item-2.jpg",
@@ -33,28 +39,12 @@
       "price": "$4.99 / kg"
     },
     {
-      "id": "6",
-      "imgSrc": "img/fruite-item-1.jpg",
-      "category": "Fruits",
-      "name": "Oranges",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "$4.99 / kg"
-    },
-    {
-      "id": "7",
-      "imgSrc": "img/fruite-item-2.jpg",
-      "category": "Fruits",
-      "name": "Raspberries",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "$4.99 / kg"
-    },
-    {
       "id": "8",
       "imgSrc": "img/fruite-item-5.jpg",
       "category": "Fruits",
       "name": "Grapes",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "$4.99 / kg"
+      "price": "$5.99 / kg"
     },
     {
       "id": "9",
@@ -73,7 +63,7 @@
       "email": "anikvohra3@gmail.com",
       "review": "its is best",
       "rating": "4",
-      "productId": "8"
+      "productId": null
     },
     {
       "id": "ed05",
@@ -81,7 +71,7 @@
       "email": "anikvohra3@gmail.com",
       "review": "its is best",
       "rating": "2.5",
-      "productId": "8"
+      "productId": null
     },
     {
       "id": "7122",

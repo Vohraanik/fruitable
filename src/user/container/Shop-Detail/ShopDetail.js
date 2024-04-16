@@ -13,29 +13,24 @@ import DialogActions from "@mui/material/DialogActions";
 import { useDispatch, useSelector } from "react-redux";
 import { addReview, getReview } from "../../../redux/action/review.action";
 import Review from "../Review/Review";
+import { addCart } from "../../../redux/slice/cart.slice";
 
 
 function ShopDetail(props) {
   const dispatch = useDispatch();
   const [productData, setProductData] = useState({});
 
-const review = useSelector(state => state.review)
-console.log(review);
+  const review = useSelector(state => state.review)
+  console.log(review);
 
-
-
-
-
-
-
+  const cart = useSelector(state => state.cart)
+  console.log(cart);
 
   const getData = async () => {
-    const response = await fetch("http://localhost:8000/posts");
+    const response = await fetch("http://localhost:8000/fruits");
     const data = await response.json();
 
     const product = data.find((v) => v.id == id);
-
-    console.log();
 
     setProductData(product);
   };
@@ -50,9 +45,9 @@ console.log(review);
 
   console.log(productData);
 
-
-
-
+  const handleAddtoCart = () => {
+    dispatch(addCart(id))
+  }
 
   return (
     <div>
@@ -81,7 +76,7 @@ console.log(review);
                   <div className="border rounded">
                     <a href="#">
                       <img
-                        src={`../${productData.img}`}
+                        src={`../${productData.imgSrc}`}
                         className="img-fluid rounded"
                         alt="Image"
                       />
@@ -131,6 +126,7 @@ console.log(review);
                   <a
                     href="#"
                     className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"
+                    onClick={handleAddtoCart}
                   >
                     <i className="fa fa-shopping-bag me-2 text-primary" /> Add
                     to cart
@@ -148,6 +144,7 @@ console.log(review);
                         data-bs-target="#nav-about"
                         aria-controls="nav-about"
                         aria-selected="true"
+
                       >
                         Description
                       </button>
@@ -165,7 +162,7 @@ console.log(review);
                       </button>
                     </div>
                   </nav>
-                 
+
                   <div className="tab-content mb-5">
                     <div
                       className="tab-pane active"
@@ -237,28 +234,28 @@ console.log(review);
                       role="tabpanel"
                       aria-labelledby="nav-mission-tab"
                     >
-                  
-                    {
-                      review.review.map((v)=>(
-                      
-                     
-                        <div className>
-                          <p className="mb-2" style={{ fontSize: 14 }}>
-                            April 12, 2024
-                          </p>
-                          <div className="d-flex justify-content-between">
-                            <h5>{v.name}</h5>
-                            <div className="d-flex mb-3">
-                            <Rating name="read-only" value={v.rating} readOnly />
+
+                      {
+                        review.review.map((v) => (
+
+
+                          <div className>
+                            <p className="mb-2" style={{ fontSize: 14 }}>
+                              April 12, 2024
+                            </p>
+                            <div className="d-flex justify-content-between">
+                              <h5>{v.name}</h5>
+                              <div className="d-flex mb-3">
+                                <Rating name="read-only" value={v.rating} readOnly />
+                              </div>
                             </div>
+                            <p className="text-dark">
+                              {v.review}
+                            </p>
                           </div>
-                          <p className="text-dark">
-                           {v.review}
-                          </p>
-                        </div>
-        
-                      ))
-                    }
+
+                        ))
+                      }
                     </div>
                     <div className="tab-pane" id="nav-vision" role="tabpanel">
                       <p className="text-dark">
@@ -272,13 +269,13 @@ console.log(review);
                     </div>
                   </div>
                 </div>
-                      <Review/>
-                   <div>
-                
-                    </div>     
+                <Review />
+                <div>
+
+                </div>
               </div>
-              
-              
+
+
             </div>
             <div className="col-lg-4 col-xl-3">
               <div className="row g-4 fruite">
@@ -640,6 +637,7 @@ console.log(review);
                     <a
                       href="#"
                       className="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"
+
                     >
                       <i className="fa fa-shopping-bag me-2 text-primary" /> Add
                       to cart

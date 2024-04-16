@@ -13,6 +13,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { object, string } from 'yup';
 import { addData, deleteData, editData, getData } from '../../../redux/action/organic.action';
 import { DataGrid } from '@mui/x-data-grid';
+import { Backdrop, CircularProgress } from '@mui/material';
 
 
 function Oerganic(props) {
@@ -21,7 +22,7 @@ function Oerganic(props) {
     const dispatch = useDispatch();
 
     const organic = useSelector((state) => state.organic);
-    console.log(organic.organic);
+    console.log(organic);
 
     useEffect(() => {
         dispatch(getData());
@@ -105,82 +106,93 @@ function Oerganic(props) {
     const { handleSubmit, handleChange, handleBlur, values, touched, errors } = formik;
 
     return (
-        <div>
-            <Button variant="contained" onClick={handleClickOpen}>
-                Add Organic
-            </Button>
+<>
+  {organic.isLoading ? (
+    <Backdrop
+      sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      open={open}
+      onClick={handleClose}
+    >
+      <CircularProgress color="inherit" />
+    </Backdrop>
+  ) : organic.error ? (
+    <div>{organic.error}</div>
+  ) : (
+    <div>
+      <Button variant="contained" onClick={handleClickOpen}>
+        Add Organic
+      </Button>
 
-            <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Add Organic</DialogTitle>
-                <form onSubmit={handleSubmit}>
-                    <DialogContent>
-                        <TextField
-                            margin="dense"
-                            id="name"
-                            name="name"
-                            label="Organic item"
-                            type="text"
-                            fullWidth
-                            variant="standard"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.name}
-                            error={touched.name && Boolean(errors.name)}
-                            helperText={touched.name && errors.name}
-                        />
-                        <TextField
-                            margin="dense"
-                            id="description"
-                            name="description"
-                            label="orgenic Description"
-                            type="text"
-                            fullWidth
-                            variant="standard"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.description}
-                            error={touched.description && Boolean(errors.description)}
-                            helperText={touched.description && errors.description}
-                        />
-                        <TextField
-                            margin="dense"
-                            id="price"
-                            name="price"
-                            label="Price"
-                            type="text"
-                            fullWidth
-                            variant="standard"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.price}
-                            error={touched.price && Boolean(errors.price)}
-                            helperText={touched.price && errors.price}
-                        />
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={handleClose} color="secondary">
-                            Cancel
-                        </Button>
-                        <Button type="submit" variant="contained" color="primary">
-                            {update ? 'Update' : 'Add'}
-                        </Button>
-                    </DialogActions>
-                </form>
-            </Dialog>
-            <div style={{ height: 400, width: '100%' }}>
-                            <DataGrid
-                                rows={organic.organic}
-                                columns={columns}
-                                initialState={{
-                                    pagination: {
-                                        paginationModel: { page: 0, pageSize: 5 },
-                                    },
-                                }}
-                                pageSizeOptions={[5, 10]}
-                                checkboxSelection
-                            />
-                        </div>
-        </div>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Add Organic</DialogTitle>
+        <form onSubmit={handleSubmit}>
+          <DialogContent>
+            <TextField
+              margin="dense"
+              id="name"
+              name="name"
+              label="Organic item"
+              type="text"
+              fullWidth
+              variant="standard"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.name}
+              error={touched.name && Boolean(errors.name)}
+              helperText={touched.name && errors.name}
+            />
+            <TextField
+              margin="dense"
+              id="description"
+              name="description"
+              label="Organic Description"
+              type="text"
+              fullWidth
+              variant="standard"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.description}
+              error={touched.description && Boolean(errors.description)}
+              helperText={touched.description && errors.description}
+            />
+            <TextField
+              margin="dense"
+              id="price"
+              name="price"
+              label="Price"
+              type="text"
+              fullWidth
+              variant="standard"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.price}
+              error={touched.price && Boolean(errors.price)}
+              helperText={touched.price && errors.price}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="secondary">
+              Cancel
+            </Button>
+            <Button type="submit" variant="contained" color="primary">
+              {update ? 'Update' : 'Add'}
+            </Button>
+          </DialogActions>
+        </form>
+      </Dialog>
+      <div style={{ height: 400, width: '100%' }}>
+        <DataGrid
+          rows={organic.organic}
+          columns={columns}
+          pageSize={5}
+          checkboxSelection
+        />
+      </div>
+    </div>
+  )}
+</>
+
+      
     );
 }
 

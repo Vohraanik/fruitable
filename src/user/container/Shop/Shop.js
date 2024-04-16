@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 function Shop(props) {
   const [productData, setProductData] = useState([]);
@@ -60,6 +60,8 @@ function Shop(props) {
     fetchData();
 
   }, []);
+
+  let {id} = useParams();
 
 
   return (
