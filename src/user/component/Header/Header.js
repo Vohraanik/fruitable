@@ -7,7 +7,7 @@ function Header(props) {
   console.log(cart);
 
 
-  const cartCount = cart.cart.reduce((total, item) => total + item.qty, 0)
+  const cartCount = cart.cart.reduce((acc, v) => acc + v.qty, 0)
 
 
 
@@ -58,10 +58,10 @@ function Header(props) {
           </div>
           <div className="d-flex m-3 me-0">
             <button className="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i className="fas fa-search text-primary" /></button>
-            <a href="#" className="position-relative me-4 my-auto">
+            <NavLink to={"/cart"} className="position-relative me-4 my-auto">
               <i className="fa fa-shopping-bag fa-2x" />
-              <link  className="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style={{top: '-5px', left: 15, height: 20, minWidth: 20}}>{cartCount}</link>
-            </a>
+              <span   className="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style={{top: '-5px', left: 15, height: 20, minWidth: 20}}>{cartCount}</span>
+            </NavLink>
             <a href="#" className="my-auto">
               <i className="fas fa-user fa-2x" />
             </a>

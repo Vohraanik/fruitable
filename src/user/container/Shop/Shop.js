@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import { getProducts } from '../../../redux/action/products.action';
 
 function Shop(props) {
   const [productData, setProductData] = useState([]);
@@ -11,31 +13,32 @@ function Shop(props) {
   const [price, setPrice] = useState("");
 
 
+const dispatch = useDispatch();
+
+const products = useSelector((state) => state.products);
+console.log(products);
+
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await fetch("http://localhost:8000/fruits");
+  //     const data = await response.json();
+  //     setProductData(data)
+
+  //     let uniqeData = [...new Set(data.map(v => v.name))];
+  //     setFruitCount(uniqeData);
+
+  //     let typeData = [...new Set(data.map(v => v.type))];
+  //     setType(typeData);
 
 
-
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch("http://localhost:8000/fruits");
-      const data = await response.json();
-      setProductData(data)
-
-      let uniqeData = [...new Set(data.map(v => v.name))];
-      setFruitCount(uniqeData);
-
-      let typeData = [...new Set(data.map(v => v.type))];
-      setType(typeData);
-
-
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // };
 
   const filterData = () => {
 
-    let filteredData = productData.filter((v) => v.name.toLowerCase().includes(search.toLowerCase()));
+    let filteredData = products.products.filter((v) => v.name.toLowerCase().includes(search.toLowerCase()));
 
     if (sort) {
       filteredData = filteredData.filter(v => v.name === sort)
@@ -57,9 +60,13 @@ function Shop(props) {
 
 
   useEffect(() => {
-    fetchData();
 
+    dispatch(getProducts())
   }, []);
+
+
+
+
 
   let {id} = useParams();
 

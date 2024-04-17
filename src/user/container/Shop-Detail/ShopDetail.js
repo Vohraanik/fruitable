@@ -76,7 +76,7 @@ function ShopDetail(props) {
                   <div className="border rounded">
                     <a href="#">
                       <img
-                        src={`../${productData.imgSrc}`}
+                        src={`../${productData?.imgSrc}`}
                         className="img-fluid rounded"
                         alt="Image"
                       />
@@ -84,9 +84,9 @@ function ShopDetail(props) {
                   </div>
                 </div>
                 <div className="col-lg-6">
-                  <h4 className="fw-bold mb-3">{productData.name}</h4>
-                  <p className="mb-3">{productData.details}</p>
-                  <h5 className="fw-bold mb-3">{productData.price} $</h5>
+                  <h4 className="fw-bold mb-3">{productData?.name}</h4>
+                  <p className="mb-3">{productData?.details}</p>
+                  <h5 className="fw-bold mb-3">{productData?.price} $</h5>
                   <div className="d-flex mb-4">
                     <i className="fa fa-star text-secondary" />
                     <i className="fa fa-star text-secondary" />
