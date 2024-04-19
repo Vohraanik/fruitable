@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { decrimentQty, handelTotal, incrementQty, removeCart } from '../../../../redux/slice/cart.slice';
 
 function Cart(props) {
   const products = useSelector((state) => state.products);
@@ -12,11 +13,32 @@ function Cart(props) {
   const productData = cart.cart.map((v) => {
     const finalData = products.products.find((v1) => v1.id === v.pid);
 
-    return { ...finalData, qty: v.qty }
+    return { ...finalData, qty: v.qty } 
   })
 
-
   console.log(productData);
+   
+
+  
+
+  const dispatch = useDispatch();
+  const handleMinus =(id) =>{
+    dispatch(decrimentQty(id))  
+  }
+
+  const handlePlus = (id) =>{
+    dispatch(incrementQty(id))
+  }
+   
+  const handleRemove = (id) => {
+    dispatch(removeCart(id))
+  }
+
+ const  subTotle = productData.reduce((acc,v)=>acc+v.price*v.qty,0);
+ const total = subTotle +2;
+
+
+
 
 
   return (
@@ -58,28 +80,38 @@ function Cart(props) {
                         <p className="mb-0 mt-4">{p.name}</p>
                       </td>
                       <td>
-                        <p className="mb-0 mt-4">{p.price} $</p>
+                        <p className="mb-0 mt-4" >{p.price} $</p>
                       </td>
                       <td>
                         <div className="input-group quantity mt-4" style={{ width: 100 }}>
                           <div className="input-group-btn">
-                            <button className="btn btn-sm btn-minus rounded-circle bg-light border">
+                            <button className="btn btn-sm btn-minus rounded-circle bg-light border"
+                             onClick={() => {handleMinus(p.id) }}
+                             >
                               <i className="fa fa-minus" />
                             </button>
                           </div>
-                          <input type="text" className="form-control form-control-sm text-center border-0" defaultValue={1} />
+                          <span type="text" className="form-control form-control-sm text-center border-0" >
+                            {p.qty}
+                          </span>
                           <div className="input-group-btn">
-                            <button className="btn btn-sm btn-plus rounded-circle bg-light border">
+                            <button
+                            onClick={() => {handlePlus(p.id) }}
+                             className="btn btn-sm btn-plus rounded-circle bg-light border"
+                            >
                               <i className="fa fa-plus" />
                             </button>
                           </div>
                         </div>
                       </td>
                       <td>
-                        <p className="mb-0 mt-4">2.99 $</p>
+                        <p className="mb-0 mt-4">{p.price * p.qty} $</p>
                       </td>
                       <td>
-                        <button className="btn btn-md rounded-circle bg-light border mt-4">
+                        <button 
+                        className="btn btn-md rounded-circle bg-light border mt-4"
+                        onClick={()=>{handleRemove(p.id)}}
+                        >
                           <i className="fa fa-times text-danger" />
                         </button>
                       </td>
@@ -102,7 +134,7 @@ function Cart(props) {
                   <h1 className="display-6 mb-4">Cart <span className="fw-normal">Total</span></h1>
                   <div className="d-flex justify-content-between mb-4">
                     <h5 className="mb-0 me-4">Subtotal:</h5>
-                    <p className="mb-0">$96.00</p>
+                    <p className="mb-0">{subTotle}</p>
                   </div>
                   <div className="d-flex justify-content-between">
                     <h5 className="mb-0 me-4">Shipping</h5>
@@ -114,7 +146,7 @@ function Cart(props) {
                 </div>
                 <div className="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                   <h5 className="mb-0 ps-4 me-4">Total</h5>
-                  <p className="mb-0 pe-4">$99.00</p>
+                  <p className="mb-0 pe-4">{total}</p>
                 </div>
                 <button className="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Proceed Checkout</button>
               </div>

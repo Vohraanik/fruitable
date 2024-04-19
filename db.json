@@ -6,15 +6,15 @@
       "category": "Fruits",
       "name": "Raspberries",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "$4.99 / kg"
+      "price": "4.99"
     },
     {
       "id": "4",
       "imgSrc": "img/fruite-item-4.jpg",
-      "category": "Fruits",
+      "category": "organics",
       "name": "Apricots",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "$4.99 / kg"
+      "price": "4.99"
     },
     {
       "id": "5",
@@ -22,7 +22,7 @@
       "category": "Fruits",
       "name": "Banana",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "$4.99 / kg"
+      "price": "4.99"
     },
     {
       "id": "8",
@@ -30,7 +30,7 @@
       "category": "Fruits",
       "name": "Grapes",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "$5.99 / kg"
+      "price": "5.99"
     },
     {
       "id": "9",
@@ -38,7 +38,7 @@
       "category": "Fruits",
       "name": "Oranges",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "$4.99 / kg"
+      "price": "4.99"
     }
   ],
   "fruits": [

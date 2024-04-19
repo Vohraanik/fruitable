@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getProducts } from '../../../redux/action/products.action';
+import { addCart } from '../../../redux/slice/cart.slice';
 
 function Shop(props) {
   const [productData, setProductData] = useState([]);
@@ -15,26 +16,28 @@ function Shop(props) {
 
 const dispatch = useDispatch();
 
+let {id} = useParams();
+
 const products = useSelector((state) => state.products);
-console.log(products);
+console.log(products);  
 
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await fetch("http://localhost:8000/fruits");
-  //     const data = await response.json();
-  //     setProductData(data)
+  const fetchData = async () => {
+    try {
+   
+      setProductData(products.products)
 
-  //     let uniqeData = [...new Set(data.map(v => v.name))];
-  //     setFruitCount(uniqeData);
+      let uniqeData = [...new Set(products.products.map(v => v.name))];
+      setFruitCount(uniqeData);
 
-  //     let typeData = [...new Set(data.map(v => v.type))];
-  //     setType(typeData);
+      let typeData = [...new Set(products.products.map(v => v.category))];  
+      setType(typeData);
+      console.log(typeData);
 
 
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //   }
-  // };
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   const filterData = () => {
 
@@ -60,15 +63,14 @@ console.log(products);
 
 
   useEffect(() => {
-
+    fetchData();
     dispatch(getProducts())
   }, []);
 
-
-
-
-
-  let {id} = useParams();
+  const addToCart = (id) => { 
+    console.log(id);
+    dispatch(addCart({id ,qty:1}))
+  }
 
 
   return (
@@ -280,7 +282,11 @@ console.log(products);
                                 <p>{product.details}</p>
                                 <div className="d-flex justify-content-between flex-lg-wrap">
                                   <p className="text-dark fs-5 fw-bold mb-0">${product.price} / kg</p>
-                                  <a href="#" className="btn border border-secondary rounded-pill px-3 text-primary"><i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart</a>
+                                  <Link
+                                   onClick={()=>{addToCart(product.id)}}
+                                   href="#" className="btn border border-secondary rounded-pill px-3 text-primary">
+                                    <i className="fa fa-shopping-bag me-2 text-primary"
+                                   /> Add to cart</Link>
                                 </div>
                               </div>
                             </div>
