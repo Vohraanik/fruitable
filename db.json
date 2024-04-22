@@ -129,5 +129,31 @@
       "review": "it is best",
       "rating": "3"
     }
+  ],
+  "coupons": [
+    {
+      "id": "858e",
+      "coupons": "sad",
+      "percantage": "12",
+      "expiry": "2024-05-03"
+    },
+    {
+      "id": "654e",
+      "coupons": "qwqw",
+      "percantage": "10",
+      "expiry": "2024-05-08"
+    },
+    {
+      "id": "e64a",
+      "coupons": "Anik",
+      "percantage": "12",
+      "expiry": "2024-05-07"
+    },
+    {
+      "id": "b26e",
+      "coupons": "sd",
+      "percantage": "12",
+      "expiry": "2024-05-11"
+    }
   ]
 }

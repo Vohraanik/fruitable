@@ -3,7 +3,9 @@ import { facilitiesReducer } from "./facilities.reducr";
 import { organicReducer } from "./organic.reducer";
 import { shopDetailReducer } from "./review.reducer";
 import { productsReducer } from "./products.reducer";
-import  cartReducer  from "../slice/cart.slice";
+import couponsSlice from "../slice/coupons.slice";
+import cartSlice from "../slice/cart.slice";
+
 
 
 export const rootReducer = combineReducers({
@@ -11,6 +13,9 @@ export const rootReducer = combineReducers({
     organic:organicReducer,
     review:shopDetailReducer,
     products:productsReducer,
-    cart:cartReducer
+    cart:cartSlice,
+    coupons:couponsSlice
+   
+
 
 })

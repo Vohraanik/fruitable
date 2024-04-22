@@ -1,10 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { decrimentQty, handelTotal, incrementQty, removeCart } from '../../../../redux/slice/cart.slice';
 
+
 function Cart(props) {
+  const [ Total,setTotal] = useState(0);
+  const [copunsvalue,setCopunsvalue] = useState("");
+  console.log(copunsvalue);
+
   const products = useSelector((state) => state.products);
   console.log(products);
+
+    const coupons = useSelector(state => state.coupons);
+    console.log(coupons);
 
   const cart = useSelector(state => state.cart)
   console.log(cart);
@@ -33,10 +41,25 @@ function Cart(props) {
   const handleRemove = (id) => {
     dispatch(removeCart(id))
   }
+ 
+  const subTotle = productData.reduce((acc,v)=>acc+v.price* v.qty,0);
 
- const  subTotle = productData.reduce((acc,v)=>acc+v.price*v.qty,0);
- const total = subTotle +2;
 
+
+ const handleCopuns = () => {
+  const couponCode = coupons.coupons.find((v) => v.coupon === copunsvalue);
+  console.log(couponCode);
+
+  if (couponCode) {
+    const discountAmount = subTotle * (couponCode.per / 100);
+    const discountedTotal = subTotle - discountAmount;
+    console.log(discountedTotal);
+    setTotal(discountedTotal);
+  } else {
+   
+    setTotal(subTotle); 
+  }
+  }
 
 
 
@@ -123,8 +146,8 @@ function Cart(props) {
             </table>
           </div>
           <div className="mt-5">
-            <input type="text" className="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Coupon Code" />
-            <button className="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">Apply Coupon</button>
+            <input type="text" className="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Coupon Code" onChange={(e) => {setCopunsvalue(e.target.value) }} />
+            <button className="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button" onClick={handleCopuns}>Apply Coupon</button>
           </div>
           <div className="row g-4 justify-content-end">
             <div className="col-8" />
@@ -146,7 +169,7 @@ function Cart(props) {
                 </div>
                 <div className="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                   <h5 className="mb-0 ps-4 me-4">Total</h5>
-                  <p className="mb-0 pe-4">{total}</p>
+                  <p className="mb-0 pe-4">{Total}</p>
                 </div>
                 <button className="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Proceed Checkout</button>
               </div>

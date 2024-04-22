@@ -69,7 +69,7 @@ console.log(products);
 
   const addToCart = (id) => { 
     console.log(id);
-    dispatch(addCart({id ,qty:1}))
+    dispatch(addCart({ id,qty:1}))
   }
 
 

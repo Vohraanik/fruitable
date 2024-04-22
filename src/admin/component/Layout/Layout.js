@@ -39,7 +39,7 @@ function Layout(props) {
     { title: 'Facilities', to: '/admin/facilities', icon: <AddShoppingCartIcon />},
     { title: 'Organic', to: '/admin/organic', icon: <AgricultureIcon />},
     { title: 'Products', to: '/admin/products', icon: <AccountBalanceWalletIcon />},
-    {title:'Copuns', to: '/admin/copuns', icon: <AccountBalanceWalletIcon />},
+    {title:'Coupons', to: '/admin/coupons', icon: <AccountBalanceWalletIcon />},
   ];
 
   const handleDrawerClose = () => {

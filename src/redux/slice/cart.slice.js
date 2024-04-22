@@ -6,7 +6,7 @@ const intialState = {
     error: null
 }
 
-const cartReducer = createSlice({
+const cartSlice = createSlice({
     name: "cart",
     initialState: intialState,
     reducers: {
@@ -49,5 +49,5 @@ const cartReducer = createSlice({
     }
 })
 
-export const { addCart, incrementQty, decrimentQty ,removeCart} = cartReducer.actions
-export default cartReducer.reducer
+export const { addCart, incrementQty, decrimentQty ,removeCart} = cartSlice.actions
+export default cartSlice.reducer
