@@ -12,7 +12,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { DataGrid } from '@mui/x-data-grid';
 import { useDispatch, useSelector } from 'react-redux';
 import { Backdrop, CircularProgress } from '@mui/material';
-import { addCoupons, deleteCoupons, getCoupons } from '../../../redux/slice/coupons.slice';
+import { addCoupons, deleteCoupons, editCoupons, getCoupons } from '../../../redux/slice/coupons.slice';
 
 function Coupons(props) {
     const [open, setOpen] = useState(false);
@@ -68,7 +68,7 @@ function Coupons(props) {
         validationSchema: couponsSchema,
         onSubmit: (values, { resetForm }) => {
             if (update) {
-
+                dispatch(editCoupons(values))
             } else {
                 dispatch(addCoupons(values));
             }
