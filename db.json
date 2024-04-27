@@ -43,44 +43,16 @@
   ],
   "fruits": [
     {
-      "id": "3",
-      "imgSrc": "img/fruite-item-2.jpg",
-      "category": "Fruits",
-      "name": "Raspberries",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "$4.99 / kg"
+      "id": "ad51",
+      "name": "Anik",
+      "description": "ww",
+      "price": "121"
     },
     {
-      "id": "4",
-      "imgSrc": "img/fruite-item-4.jpg",
-      "category": "Fruits",
-      "name": "Apricots",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "$4.99 / kg"
-    },
-    {
-      "id": "5",
-      "imgSrc": "img/fruite-item-3.jpg",
-      "category": "Fruits",
-      "name": "Banana",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "$4.99 / kg"
-    },
-    {
-      "id": "8",
-      "imgSrc": "img/fruite-item-5.jpg",
-      "category": "Fruits",
-      "name": "Grapes",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "$5.99 / kg"
-    },
-    {
-      "id": "9",
-      "imgSrc": "img/fruite-item-1.jpg",
-      "category": "Fruits",
-      "name": "Oranges",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "$4.99 / kg"
+      "id": "9d5e",
+      "name": "wrwsa",
+      "description": "fd",
+      "price": "12"
     }
   ],
   "facilities": [],
@@ -142,6 +114,12 @@
       "coupons": "BOSS12",
       "percantage": "12",
       "expiry": "2024-05-10"
+    },
+    {
+      "id": "8841",
+      "coupons": "ANIK23",
+      "percantage": "112",
+      "expiry": "2024-05-11"
     }
   ]
 }

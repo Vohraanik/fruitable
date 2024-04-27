@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
+import { ThemeContext} from '../../../context/Theme.context';
+
 function Header(props) {
   const cart = useSelector(state => state.cart)
-  console.log(cart);
 
+
+  const theme = useContext(ThemeContext);
+  console.log(theme);
+
+  const handleTheme = () =>{
+    theme.toggleTheme(ThemeContext.theme);
+  }
 
   const cartCount = cart.cart.reduce((acc, v) => acc + v.qty, 0)
 
@@ -20,7 +28,7 @@ function Header(props) {
   </div> */}
   {/* Spinner End */}
   {/* Navbar start */}
-  <div className="container-fluid fixed-top">
+  <div className={`container-fluid fixed-top`} > 
     <div className="container topbar bg-primary d-none d-lg-block">
       <div className="d-flex justify-content-between">
         <div className="top-info ps-2">
@@ -31,6 +39,7 @@ function Header(props) {
           <a href="#" className="text-white"><small className="text-white mx-2">Privacy Policy</small>/</a>
           <a href="#" className="text-white"><small className="text-white mx-2">Terms of Use</small>/</a>
           <a href="#" className="text-white"><small className="text-white ms-2">Sales and Refunds</small></a>
+  
         </div>
       </div>
     </div>
@@ -40,7 +49,7 @@ function Header(props) {
         <button className="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
           <span className="fa fa-bars text-primary" />
         </button>
-        <div className="collapse navbar-collapse bg-white" id="navbarCollapse">
+        <div className="collapse navbar-collapse" id="navbarCollapse">
           <div className="navbar-nav mx-auto">
             <NavLink to={"/"} className="nav-item nav-link active">Home</NavLink>
             <NavLink to={"/shop"} className="nav-item nav-link">Shop</NavLink>
@@ -55,6 +64,7 @@ function Header(props) {
               </div>
             </div>
             <NavLink to={"/contact"} className="nav-item nav-link">Contact</NavLink>
+            <button onClick={handleTheme}>Theme</button>
           </div>
           <div className="d-flex m-3 me-0">
             <button className="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i className="fas fa-search text-primary" /></button>

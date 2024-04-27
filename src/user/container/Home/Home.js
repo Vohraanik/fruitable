@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { Face } from '@mui/icons-material';
 import { getFacilities } from '../../../redux/action/facilities.action';
+import { ThemeContext } from '../../../context/Theme.context';
 
 function Home(props) {
 
@@ -13,6 +14,8 @@ function Home(props) {
 
   const facilities = useSelector((state) => state.facilities.facilities);
   console.log(facilities);
+
+  const theme = useContext(ThemeContext);
 
 
 
@@ -151,8 +154,8 @@ function Home(props) {
       </div>
       {/* Featurs Section End */}
       {/* Fruits Shop Start*/}
-      <div className="container-fluid fruite py-5">
-        <div className="container py-5">
+      <div className="container-fluid fruite py-5 ">
+        <div className={`container py-5 ${theme.theme}`}>
           <div className="tab-class text-center">
             <div className="row g-4">
               <div className="col-lg-4 text-start">
@@ -711,7 +714,7 @@ function Home(props) {
           </div>
           <div className="row g-4">
             <div className="col-lg-6 col-xl-4">
-              <div className="p-4 rounded bg-light">
+              <div className={`p-4 rounded bg-light border ${theme.theme}`}>
                 <div className="row align-items-center">
                   <div className="col-6">
                     <img src="img/best-product-1.jpg" className="img-fluid rounded-circle w-100" alt />
@@ -732,7 +735,7 @@ function Home(props) {
               </div>
             </div>
             <div className="col-lg-6 col-xl-4">
-              <div className="p-4 rounded bg-light">
+              <div className={`p-4 rounded bg-light  border  ${theme.theme}`}>
                 <div className="row align-items-center">
                   <div className="col-6">
                     <img src="img/best-product-2.jpg" className="img-fluid rounded-circle w-100" alt />
@@ -753,7 +756,7 @@ function Home(props) {
               </div>
             </div>
             <div className="col-lg-6 col-xl-4">
-              <div className="p-4 rounded bg-light">
+              <div className={`p-4 rounded bg-light border  ${theme.theme}`}>
                 <div className="row align-items-center">
                   <div className="col-6">
                     <img src="img/best-product-3.jpg" className="img-fluid rounded-circle w-100" alt />
@@ -774,7 +777,7 @@ function Home(props) {
               </div>
             </div>
             <div className="col-lg-6 col-xl-4">
-              <div className="p-4 rounded bg-light">
+              <div className={`p-4 rounded bg-light border rounded  ${theme.theme}`}>
                 <div className="row align-items-center">
                   <div className="col-6">
                     <img src="img/best-product-4.jpg" className="img-fluid rounded-circle w-100" alt />
@@ -795,7 +798,7 @@ function Home(props) {
               </div>
             </div>
             <div className="col-lg-6 col-xl-4">
-              <div className="p-4 rounded bg-light">
+              <div className={`p-4 rounded bg-light border  rounded ${theme.theme}`}>
                 <div className="row align-items-center">
                   <div className="col-6">
                     <img src="img/best-product-5.jpg" className="img-fluid rounded-circle w-100" alt />
@@ -815,9 +818,9 @@ function Home(props) {
                 </div>
               </div>
             </div>
-            <div className="col-lg-6 col-xl-4">
-              <div className="p-4 rounded bg-light">
-                <div className="row align-items-center">
+            <div className="col-lg-6 col-xl-4 ">
+              <div className={`p-4 rounded border rounded  ${theme.theme}`}>
+                <div className="row align-items-center" >
                   <div className="col-6">
                     <img src="img/best-product-6.jpg" className="img-fluid rounded-circle w-100" alt />
                   </div>
@@ -837,7 +840,7 @@ function Home(props) {
               </div>
             </div>
             <div className="col-md-6 col-lg-6 col-xl-3">
-              <div className="text-center">
+              <div className={`text-center border rounded   ${theme.theme}`}>
                 <img src="img/fruite-item-1.jpg" className="img-fluid rounded" alt />
                 <div className="py-4">
                   <a href="#" className="h5">Organic Tomato</a>
@@ -854,7 +857,7 @@ function Home(props) {
               </div>
             </div>
             <div className="col-md-6 col-lg-6 col-xl-3">
-              <div className="text-center">
+              <div className={`text-center border rounded  ${theme.theme}`}>
                 <img src="img/fruite-item-2.jpg" className="img-fluid rounded" alt />
                 <div className="py-4">
                   <a href="#" className="h5">Organic Tomato</a>
@@ -871,7 +874,7 @@ function Home(props) {
               </div>
             </div>
             <div className="col-md-6 col-lg-6 col-xl-3">
-              <div className="text-center">
+              <div className={`text-center border rounded   ${theme.theme}`}>
                 <img src="img/fruite-item-3.jpg" className="img-fluid rounded" alt />
                 <div className="py-4">
                   <a href="#" className="h5">Organic Tomato</a>
@@ -888,7 +891,7 @@ function Home(props) {
               </div>
             </div>
             <div className="col-md-6 col-lg-6 col-xl-3">
-              <div className="text-center">
+              <div className={`text-center border  rounded  ${theme.theme}`}>
                 <img src="img/fruite-item-4.jpg" className="img-fluid rounded" alt />
                 <div className="py-2">
                   <a href="#" className="h5">Organic Tomato</a>
@@ -911,31 +914,31 @@ function Home(props) {
       {/* Fact Start */}
       <div className="container-fluid py-5">
         <div className="container">
-          <div className="bg-light p-5 rounded">
+          <div className={`bg-light p-5 rounded ${theme.theme}`}>
             <div className="row g-4 justify-content-center">
               <div className="col-md-6 col-lg-6 col-xl-3">
-                <div className="counter bg-white rounded p-5">
+                <div className={`counter bg-white border rounded p-5 ${theme.theme}`}>
                   <i className="fa fa-users text-secondary" />
                   <h4>satisfied customers</h4>
                   <h1>1963</h1>
                 </div>
               </div>
               <div className="col-md-6 col-lg-6 col-xl-3">
-                <div className="counter bg-white rounded p-5">
+                <div className={`counter bg-white border rounded p-5 ${theme.theme}`}>
                   <i className="fa fa-users text-secondary" />
                   <h4>quality of service</h4>
                   <h1>99%</h1>
                 </div>
               </div>
               <div className="col-md-6 col-lg-6 col-xl-3">
-                <div className="counter bg-white rounded p-5">
+                <div className={`counter bg-white border rounded p-5 ${theme.theme}`}>
                   <i className="fa fa-users text-secondary" />
                   <h4>quality certificates</h4>
                   <h1>33</h1>
                 </div>
               </div>
               <div className="col-md-6 col-lg-6 col-xl-3">
-                <div className="counter bg-white rounded p-5">
+                <div className={`counter bg-white border rounded p-5 ${theme.theme}`}>
                   <i className="fa fa-users text-secondary" />
                   <h4>Available Products</h4>
                   <h1>789</h1>
@@ -954,8 +957,8 @@ function Home(props) {
             <h1 className="display-5 mb-5 text-dark">Our Client Saying!</h1>
           </div>
           <OwlCarousel {...tes} className="owl-carousel testimonial-carousel">
-            <div className="testimonial-item img-border-radius bg-light rounded p-4">
-              <div className="position-relative">
+            <div className={`testimonial-item img-border-radius rounded  p-4  ${theme.theme === "dark" ? "border border-warning" : "bg-light "}`}>
+              <div className="position-relative ">
                 <i className="fa fa-quote-right fa-2x text-secondary position-absolute" style={{ bottom: 30, right: 0 }} />
                 <div className="mb-4 pb-4 border-bottom border-secondary">
                   <p className="mb-0">Lorem Ipsum is simply dummy text of the printing Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -979,7 +982,7 @@ function Home(props) {
                 </div>
               </div>
             </div>
-            <div className="testimonial-item img-border-radius bg-light rounded p-4">
+            <div className={`testimonial-item img-border-radius rounded  p-4  ${theme.theme === "dark" ? "border border-warning" : "bg-light "}`}>
               <div className="position-relative">
                 <i className="fa fa-quote-right fa-2x text-secondary position-absolute" style={{ bottom: 30, right: 0 }} />
                 <div className="mb-4 pb-4 border-bottom border-secondary">
@@ -1004,7 +1007,7 @@ function Home(props) {
                 </div>
               </div>
             </div>
-            <div className="testimonial-item img-border-radius bg-light rounded p-4">
+            <div className={`testimonial-item img-border-radius rounded  p-4  ${theme.theme === "dark" ? "border border-warning" : "bg-light "}`}>
               <div className="position-relative">
                 <i className="fa fa-quote-right fa-2x text-secondary position-absolute" style={{ bottom: 30, right: 0 }} />
                 <div className="mb-4 pb-4 border-bottom border-secondary">

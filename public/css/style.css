@@ -1,3 +1,19 @@
+/* theme */
+.dark {
+    background: #000 !important;
+    color: #ffffff !;
+}
+
+.light {
+    background: #ffffff !important;
+    color: #000 !important;
+}
+
+.dark .h5 {
+    color: #ffffff !important;
+}
+
+/* ****************** */
 
 /*** Spinner Start ***/
 #spinner {
@@ -75,6 +91,11 @@
 }
 
 /*** Topbar Start ***/
+.dark .fixed-top {
+    background: #000 !important;
+    color: green;
+}
+
 .fixed-top {
     transition: 0.5s;
     background: var(--bs-white);
@@ -117,6 +138,10 @@
 /*** Topbar End ***/
 
 /*** Navbar Start ***/
+.dark .navbar .navbar-nav .nav-link  {
+    color: #81C405;
+    background-color:#000;
+}
 .navbar .navbar-nav .nav-link {
     padding: 10px 15px;
     font-size: 16px;
@@ -177,6 +202,9 @@
 /*** Navbar End ***/
 
 /*** Hero Header ***/
+.dark .hero-header {
+    background-image: none;
+}
 .hero-header {
     background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.1)), url(../img/hero-img.jpg);
     background-position: center center;
@@ -223,6 +251,22 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.dark  h1 {
+    color: #ffffff !important;
+}
+
+.dark  h4 {
+    color: #ffffff !important;
+}
+
+.dark p {
+    color: #ffffff !important;
+}
+
+.dark  .rounded {
+    color: #ffffff !important;
 }
 
 @media (min-width: 992px) {

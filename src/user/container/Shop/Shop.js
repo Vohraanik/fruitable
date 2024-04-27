@@ -19,7 +19,7 @@ const dispatch = useDispatch();
 let {id} = useParams();
 
 const products = useSelector((state) => state.products);
-console.log(products);  
+
 
   const fetchData = async () => {
     try {
@@ -31,7 +31,7 @@ console.log(products);
 
       let typeData = [...new Set(products.products.map(v => v.category))];  
       setType(typeData);
-      console.log(typeData);
+
 
 
     } catch (error) {
@@ -68,7 +68,6 @@ console.log(products);
   }, []);
 
   const addToCart = (id) => { 
-    console.log(id);
     dispatch(addCart({ id,count:1}))
   }
 

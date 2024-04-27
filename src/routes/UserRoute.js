@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Header from '../user/component/Header/Header'
 import Home from '../user/container/Home/Home';
 import Shop from '../user/container/Shop/Shop';
@@ -11,28 +11,37 @@ import Testimonial from '../user/container/Page/Testimonial/Testimonail';
 import { Route, Routes } from "react-router-dom";
 import Footer from '../user/component/Footer/Footer';
 import PrivateRoute from './PrivateRoute';
+import { ThemeContext } from '../context/Theme.context';
+
 
 function UserRoute(props) {
+    const theme = useContext(ThemeContext);
+    console.log(theme);
     return (
+     
+
         <div>
-            <>
+            <div className={theme.theme} >
+     
                 <Header />
-                <Routes>
-                    <Route exect path="/" element={<Home />} />
-                  
-                    <Route exect path="/shop" element={<Shop />} />
-                    <Route exect path="/shop/:id" element={<ShopDetail />} />
-                    <Route exect path='/shop-detail' element={<ShopDetail />} />
-                    <Route exect path="/cart" element={<Cart />} />
-                    <Route element={<PrivateRoute />}>
-                    <Route exect path="/checkout" element={<CheckOut />} />
-                    </Route>
-                    <Route exect path="/testimonial" element={<Testimonial />} />
-                    <Route exect path="/error" element={<Error />} />
-                    <Route exect path="/contact" element={<Contact />} />
-                </Routes>
-                <Footer />
-            </>
+                    <Routes>
+                        <Route exact path="/" element={<Home />} />
+                      
+                        <Route exact path="/shop" element={<Shop />} />
+                        <Route exact path="/shop/:id" element={<ShopDetail />} />
+                        <Route exact path='/shop-detail' element={<ShopDetail />} />
+                        <Route exact path="/cart" element={<Cart />} />
+                        <Route element={<PrivateRoute />}>
+                        <Route exact path="/checkout" element={<CheckOut />} />
+                        </Route>
+                        <Route exact path="/testimonial" element={<Testimonial />} />
+                        <Route exact path="/error" element={<Error />} />
+                        <Route exact path="/contact" element={<Contact />} />
+                    </Routes>
+                    <Footer />
+           
+               
+            </div>
 
         </div>
     );

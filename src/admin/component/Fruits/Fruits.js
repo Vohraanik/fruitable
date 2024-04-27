@@ -1,162 +1,189 @@
 import { Button } from '@mui/material';
-import React from 'react';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid'; 
-// import Button from '@mui/material/Button';
+import React, { useContext, useEffect, useState } from 'react';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { object, string, number, date, InferType } from 'yup';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useFormik } from 'formik';
+import { fruitsContext } from '../../../context/Friuts.context';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 function Fruits(props) {
 
-  const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(false);
+    const [update, setUpdate] = useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+    const fruits = useContext(fruitsContext)
+    console.log(fruits);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+    useEffect(() => {
+        fruits.getFruits();
+    }, [])
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+        setUpdate(false);
+        formik.resetForm();
+    };
+
+    const handleDelete = (id) => {
+        console.log(id);
+        fruits.deleteFruits(id)
+    };
+
+    const handleEdit = (data) => {
+        formik.setValues(data);
+        setOpen(true);
+        setUpdate(true);
+    };
+
+    let fruitsSchema = object({
+        name: string().required(),
+        description: string().required(),
+        price: number().required().positive().integer(),
+    });
 
 
-   const columns: GridColTypeDef[] = [
-        { field: 'id', headerName: 'ID', width: 70 },
-        { field: 'firstName', headerName: 'First name', width: 130 },
-        { field: 'lastName', headerName: 'Last name', width: 130 },
+    const columns = [
+        { field: 'name', headerName: 'Name', width: 150 },
+        { field: 'description', headerName: 'Description', width: 250 },
+        { field: 'price', headerName: 'Price', width: 150 },
         {
-          field: 'age',
-          headerName: 'Age',
-          type: 'number', 
-          width: 90,
+            field: 'Action',
+            headerName: 'Action',
+            width: 150,
+            renderCell: (params) => (
+                <>
+                    <Button
+                        style={{ marginRight: '10px' }}
+                        variant="outlined"
+                        color="error"
+                        onClick={() => handleDelete(params.row.id)}
+                        startIcon={<DeleteIcon />}
+                    >
+                    </Button>
+                    <Button
+                        variant="outlined"
+                        color="primary"
+                        onClick={() => handleEdit(params.row)}
+                        startIcon={<EditIcon />}
+                    >
+                    </Button>
+                </>
+            ),
         },
-        {
-          field: 'fullName',
-          headerName: 'Full name',
-          description: 'This column has a value getter and is not sortable.',
-          sortable: false,
-          width: 160,
-          valueGetter: (params: GridValueGetterParams) =>
-            `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-        },
-      ];
-      
+    ];
 
-const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-];
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+            description: '',
+            price: '',
+        },
+        validationSchema: fruitsSchema,
+        onSubmit: (values, { resetForm }) => {
+            console.log(values);
+     
+            if (update) {
+                fruits.editFruits(values)
+            } else {
+                fruits.addFruits(values)
+            }
+            resetForm();
+            handleClose();
+        },
+    });
+
+    const { handleSubmit, handleChange, handleBlur, values, touched, errors } = formik;
+
+
+ 
+
     return (
-      <div style={{textAlign:'end' , marginRight:'20px',marginTop:'20px'}}>
-          <React.Fragment>
+        <div style={{ textAlign: ' end', marginRight: '20px', marginTop: '20px' }}>
+            <React.Fragment>
                 <Button variant="outlined" onClick={handleClickOpen}>
-                    Open form dialog
+                    Add Friuts
                 </Button>
                 <Dialog
                     open={open}
                     onClose={handleClose}
-                    PaperProps={{
-                        component: 'form',
-                        onSubmit: (event) => {
-                            event.preventDefault();
-                            const formData = new FormData(event.currentTarget);
-                            const formJson = Object.fromEntries(formData.entries());
-                            const email = formJson.email;
-                            console.log(email);
-                            handleClose();
-                        },
-                    }}
                 >
-                    <DialogTitle>Subscribe</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText>
-                            To subscribe to this website, please enter your email address here. We
-                            will send updates occasionally.
-                        </DialogContentText>
-                        <TextField
-                            autoFocus
-                            required
-                            margin="dense"
-                            id="email"
-                            name="email"
-                            label="Email Address"
-                            type="email"
-                            fullWidth
-                            variant="standard"
-
-                        />
-                        <TextField
-                            margin="dense"
-                            id="name"
-                            name="name"
-                            label="Name"
-                            type="text"
-                            fullWidth
-                            variant="standard"
-
-                        />
-                        <TextField
-                            margin="dense"
-                            id="description"
-                            name="description"
-                            label="Description"
-                            type="text"
-                            fullWidth
-                            variant="standard"
-
-                        />
-                        <TextField
-                            margin="dense"
-                            id="price"
-                            name="price"
-                            label="Price"
-                            type="number"
-                            fullWidth
-                            variant="standard"
-
-                        />
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={handleClose}>Cancel</Button>
-                        <Button type="submit">Subscribe</Button>
-                    </DialogActions>
+                    <DialogTitle>Fruits</DialogTitle>
+                    <form onSubmit={handleSubmit}>
+                        <DialogContent>
+                            <TextField
+                                margin="dense"
+                                id="name"
+                                name="name"
+                                label="Fruits "
+                                type="text"
+                                fullWidth
+                                variant="standard"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.name}
+                                error={touched.name && Boolean(errors.name)}
+                                helperText={touched.name && errors.name}
+                            />
+                            <TextField
+                                margin="dense"
+                                id="description"
+                                name="description"
+                                label="Fruits Description"
+                                type="text"
+                                fullWidth
+                                variant="standard"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.description}
+                                error={touched.description && Boolean(errors.description)}
+                                helperText={touched.description && errors.description}
+                            />
+                            <TextField
+                                margin="dense"
+                                id="price"
+                                name="price"
+                                label="Price"
+                                type="text"
+                                fullWidth
+                                variant="standard"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.price}
+                                error={touched.price && Boolean(errors.price)}
+                                helperText={touched.price && errors.price}
+                            />
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleClose} color="secondary">
+                                Cancel
+                            </Button>
+                            <Button type="submit" variant="contained" color="primary">
+                            {update ? 'Update' : 'Add'}
+                            </Button>
+                        </DialogActions>
+                    </form>
                 </Dialog>
-            </React.Fragment> 
-       <div style={{ height: 400, width: '100%' }}>
+            </React.Fragment>
+            <div style={{ height: 400, width: '100%' }}>
                 <DataGrid
-                    sx={{
-                        border: 1,
-                        borderColor: 'grey.500',
-                        margin: '20px auto', // add a margin of 20px on the top
-                        width: '80%',
-                        '& .MuiDataGrid-columnHeaders': {
-                            borderBottom: 1,
-                            borderColor: 'grey.500',
-                        },
-                    }}
-                    rows={rows}
+                    rows={fruits.fruits}
                     columns={columns}
-                    initialState={{
-                        pagination: {
-                            paginationModel: { page: 0, pageSize: 5 },
-                        },
-                    }}
-                    pageSizeOptions={[5, 10]}
+                    pageSize={5}
                     checkboxSelection
                 />
             </div>
-        
-            </div>
-    
+        </div>
     );
 }
 
