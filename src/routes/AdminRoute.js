@@ -13,7 +13,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import Organic from '../admin/component/Organic/Organic';
 import Products from '../admin/component/Products/Products';
 import Coupons from '../admin/component/Coupons/Coupons';
-import { FruitsProvider, fruitsContext } from '../context/Friuts.context';
+import { FruitsProvider} from '../context/Friuts.context';
+
 
 
 function AdminRoute(props) {
@@ -24,12 +25,11 @@ function AdminRoute(props) {
                     <Routes >
                         <Route element={<PrivateRoute />}>
                             <Route exact path="/fruits" element={<Fruits />} />
-                            <Route exact path="/vegetables" element={<Vegetables />} />
-                            <Route exact path='/category' element={<Category />} />
-                            <Route exact path='/facilities' element={<Facilities />} />
-                            <Route exact path='/organic' element={<Organic />} />
-                            <Route exact path='/products' element={<Products />} />
-                            <Route exact path='/coupons' element={<Coupons />} />
+                            <Route exact path="/organic" element={<Organic />} />
+                            <Route exact path="/products" element={<Products />} />
+                            <Route exact path="/coupons" element={<Coupons />} />
+                            <Route exact path="/category" element={<Category />} />
+
                         </Route>
                     </Routes>
                 </Layout>

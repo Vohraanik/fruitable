@@ -43,16 +43,10 @@
   ],
   "fruits": [
     {
-      "id": "ad51",
-      "name": "Anik",
-      "description": "ww",
-      "price": "121"
-    },
-    {
-      "id": "9d5e",
-      "name": "wrwsa",
-      "description": "fd",
-      "price": "12"
+      "id": "8197",
+      "name": "wete",
+      "description": "werwe",
+      "price": "12312"
     }
   ],
   "facilities": [],
@@ -120,6 +114,26 @@
       "coupons": "ANIK23",
       "percantage": "112",
       "expiry": "2024-05-11"
+    }
+  ],
+  "contact": [
+    {
+      "id": "0f55",
+      "address": "edf",
+      "email": "ayaz@gmail.com",
+      "number": "1234"
+    },
+    {
+      "id": "3ab5",
+      "address": "swagfat redasdfg",
+      "email": "ayaz@gmail.com",
+      "number": "1234"
+    },
+    {
+      "id": "7083",
+      "address": "swagfat redasdfg",
+      "email": "ayaz@gmail.com",
+      "number": "1234"
     }
   ]
 }

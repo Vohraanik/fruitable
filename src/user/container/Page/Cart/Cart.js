@@ -5,6 +5,8 @@ import { getCoupons } from '../../../../redux/slice/coupons.slice';
 import { useFormik } from 'formik';
 import { object, string } from 'yup';
 import { Alert } from '@mui/material';
+import Button from '../../../component/UI/Button/Button';
+
 
 
 function Cart(props) {
@@ -233,7 +235,10 @@ function Cart(props) {
                   <p className="mb-0 pe-4">{total}</p>
 
                 </div>
-                <button className="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Proceed Checkout</button>
+                <Button  btnDisable = {true}
+                onClick={()=>console.log("ok")}
+                >Proceed Checkout
+                </Button>
               </div>
             </div>
           </div>

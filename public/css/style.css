@@ -9,9 +9,16 @@
     color: #000 !important;
 }
 
-.dark .h5 {
-    color: #ffffff !important;
+.dark  p { 
+    color: white;
+ }
+.dark h4 {
+    color: white;
 }
+.dark a {
+    color: white;
+}
+
 
 /* ****************** */
 
@@ -253,21 +260,9 @@
     background-size: cover;
 }
 
-.dark  h1 {
-    color: #ffffff !important;
-}
 
-.dark  h4 {
-    color: #ffffff !important;
-}
 
-.dark p {
-    color: #ffffff !important;
-}
 
-.dark  .rounded {
-    color: #ffffff !important;
-}
 
 @media (min-width: 992px) {
     .hero-header,

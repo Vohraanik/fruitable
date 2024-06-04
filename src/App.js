@@ -7,13 +7,15 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { configureStore } from './redux/Store';
 import { ThemeProvider } from "./context/Theme.context";
+import { ContactProvider } from "./context/contactContext";
 
 
 function App() {
   const { store, persistor } = configureStore();
   return (
     <>
-      <ThemeProvider>
+    <ContactProvider>
+    <ThemeProvider>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
             <Routes>
@@ -25,6 +27,8 @@ function App() {
           </PersistGate>
         </Provider>
       </ThemeProvider>
+    </ContactProvider>
+     
     </>
   );
 }

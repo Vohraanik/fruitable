@@ -33,13 +33,14 @@ function Layout(props) {
   const [isClosing, setIsClosing] = React.useState(false);
 
   const adminLink = [
-    { title: 'Fruits', to:'/admin/fruits', icon: <AppleIcon />}, 
-    { title: 'Vegetable', to: '/admin/vegetables', icon: <BakeryDiningIcon />},
-    { title: 'Category', to: '/admin/category', icon: <CategoryIcon />},
-    { title: 'Facilities', to: '/admin/facilities', icon: <AddShoppingCartIcon />},
-    { title: 'Organic', to: '/admin/organic', icon: <AgricultureIcon />},
-    { title: 'Products', to: '/admin/products', icon: <AccountBalanceWalletIcon />},
-    {title:'Coupons', to: '/admin/coupons', icon: <AccountBalanceWalletIcon />},
+    { title: 'Fruits', to: '/admin/fruits', icon: <AppleIcon /> },
+    { title: 'Vegetable', to: '/admin/vegetables', icon: <BakeryDiningIcon /> },
+    { title: 'Category', to: '/admin/category', icon: <CategoryIcon /> },
+    { title: 'Facilities', to: '/admin/facilities', icon: <AddShoppingCartIcon /> },
+    { title: 'Organic', to: '/admin/organic', icon: <AgricultureIcon /> },
+    { title: 'Products', to: '/admin/products', icon: <AccountBalanceWalletIcon /> },
+    { title: 'Coupons', to: '/admin/coupons', icon: <AccountBalanceWalletIcon /> },
+    { title: 'Contact', to: '/admin/contact', icon: <AccountBalanceWalletIcon /> },
   ];
 
   const handleDrawerClose = () => {
@@ -63,9 +64,9 @@ function Layout(props) {
       <Divider />
       <List>
         {adminLink.map((text, index) => (
-          <ListItem 
+          <ListItem
             key={text.title}
-            disablePadding 
+            disablePadding
             component={NavLink}
             to={`${text.to}`}
           >
@@ -121,7 +122,7 @@ function Layout(props) {
           onTransitionEnd={handleDrawerTransitionEnd}
           onClose={handleDrawerClose}
           ModalProps={{
-            keepMounted: true, 
+            keepMounted: true,
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },

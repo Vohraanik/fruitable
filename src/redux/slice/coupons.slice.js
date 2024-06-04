@@ -2,9 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios";
 import { BASE_URL } from "../../utils/baseUrl"
 
-
-
-
 const initialState = {
     isLoading: false,
     coupons: [],
@@ -85,12 +82,12 @@ const couponsSlice = createSlice({
 
         })
 
-        builder.addCase(editCoupons.fulfilled,(state,action)=> {
+        builder.addCase(editCoupons.fulfilled, (state, action) => {
             console.log(action);
-            state.coupons=state.coupons.map((v)=>{
-                if(v.id===action.payload.id){
+            state.coupons = state.coupons.map((v) => {
+                if (v.id === action.payload.id) {
                     return action.payload
-                }else{
+                } else {
                     return v
                 }
             })

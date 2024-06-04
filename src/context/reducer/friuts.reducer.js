@@ -1,3 +1,4 @@
+//fruitsReducer.js
 import { ADD_FRUITS, DELETE_FRUITS, EDIT_FRUITS, GET_FRUITS } from "../ActionType";
 
 

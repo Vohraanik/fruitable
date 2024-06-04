@@ -97,7 +97,6 @@ function Coupons(props) {
                         onClick={() => handleDelete(params.row.id)}
                         startIcon={<DeleteIcon />}
                     >
-
                     </Button>
                     <Button
                         variant="outlined"
@@ -105,7 +104,6 @@ function Coupons(props) {
                         onClick={() => handleEdit(params.row)}
                         startIcon={<EditIcon />}
                     >
-
                     </Button>
                 </>
             ),
@@ -114,17 +112,6 @@ function Coupons(props) {
 
     return (
         <>
-            {/* {coupons.isLoading ? (
-                <Backdrop
-                    sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                    open={open}
-                    onClick={handleClose}
-                >
-                    <CircularProgress color="inherit" />
-                </Backdrop>
-            ) : coupons.error ? (
-                <div>{coupons.error}</div>
-            ) : ( */}
                 <div>
                     <Button variant="contained" onClick={handleClickOpen}>
                         Add Coupons

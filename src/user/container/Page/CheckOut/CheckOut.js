@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../../../context/Theme.context';
 
 function CheckOut(props) {
+  const theme = useContext(ThemeContext);
     return (
 <div>
   <div className="container-fluid page-header py-5">
@@ -13,8 +15,8 @@ function CheckOut(props) {
   </div>
   {/* Single Page Header End */}
   {/* Checkout Page Start */}
-  <div className="container-fluid py-5">
-    <div className="container py-5">
+  <div className={`container-fluid py-5 ${theme.theme}`}>
+    <div className={`container py-5 `}>
       <h1 className="mb-4">Billing details</h1>
       <form action="#">
         <div className="row g-5">
