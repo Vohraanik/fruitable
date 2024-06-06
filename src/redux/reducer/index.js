@@ -5,6 +5,7 @@ import { shopDetailReducer } from "./review.reducer";
 import { productsReducer } from "./products.reducer";
 import couponsSlice from "../slice/coupons.slice";
 import cartSlice from "../slice/cart.slice";
+import { subcategoryReducer } from "./subcategory.reducer";
 
 
 
@@ -14,7 +15,8 @@ export const rootReducer = combineReducers({
     review:shopDetailReducer,
     products:productsReducer,
     cart:cartSlice,
-    coupons:couponsSlice
+    coupons:couponsSlice,
+    subcategories:subcategoryReducer
    
 
 

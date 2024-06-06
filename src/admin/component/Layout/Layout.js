@@ -36,6 +36,7 @@ function Layout(props) {
     { title: 'Fruits', to: '/admin/fruits', icon: <AppleIcon /> },
     { title: 'Vegetable', to: '/admin/vegetables', icon: <BakeryDiningIcon /> },
     { title: 'Category', to: '/admin/category', icon: <CategoryIcon /> },
+    { title: 'Subcategory', to: '/admin/subcategory', icon: <CategoryIcon/> },
     { title: 'Facilities', to: '/admin/facilities', icon: <AddShoppingCartIcon /> },
     { title: 'Organic', to: '/admin/organic', icon: <AgricultureIcon /> },
     { title: 'Products', to: '/admin/products', icon: <AccountBalanceWalletIcon /> },
