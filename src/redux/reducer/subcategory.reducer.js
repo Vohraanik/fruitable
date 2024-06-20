@@ -1,4 +1,4 @@
-import { ADD_SUBCATEGORY, DELETE_SUBCATEGORY, EDIT_SUBCATEGORY, ERROR_SUBCATEGORY, GET_SUBCATEGORY, LOADING_SUBCATEGORY } from "../ActionType";
+import { ADD_SUBCATEGORY, DELETE_SUBCATEGORY, EDIT_SUBCATEGORY, ERROR_SUBCATEGORY, FILTER_SUBCATEGORY, GET_SUBCATEGORY, LOADING_SUBCATEGORY } from "../ActionType";
 
 const initialState = {
     isLoading: false,
@@ -7,7 +7,6 @@ const initialState = {
 };
 
 export const subcategoryReducer = (state = initialState, action) => {
-    console.log(action.payload);
 
     switch (action.type) {
         case LOADING_SUBCATEGORY:
@@ -26,7 +25,7 @@ export const subcategoryReducer = (state = initialState, action) => {
         case GET_SUBCATEGORY:
             return {
                 isLoading: false,
-                subcategory: action.payload.data, 
+                subcategory: action.payload.data,
                 error: null
             };
 
@@ -47,10 +46,9 @@ export const subcategoryReducer = (state = initialState, action) => {
         case EDIT_SUBCATEGORY:
             return {
                 isLoading: false,
-                subcategory: state.subcategory.map((v) => v._id === action.payload.data._id ? action.payload.data : v), 
+                subcategory: state.subcategory.map((v) => v._id === action.payload.data._id ? action.payload.data : v),
                 error: null
             };
-
         default:
             return state;
     }

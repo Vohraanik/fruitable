@@ -76,10 +76,7 @@ const couponsSlice = createSlice({
 
         builder.addCase(deleteCoupons.fulfilled, (state, action) => {
             console.log(action);
-
             state.coupons = state.coupons.filter((v) => v.id !== action.payload);
-
-
         })
 
         builder.addCase(editCoupons.fulfilled, (state, action) => {

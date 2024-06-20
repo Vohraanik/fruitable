@@ -81,7 +81,7 @@ function Coupons(props) {
     const { handleSubmit, handleChange, handleBlur, values, touched, errors } = formik;
 
     const columns = [
-        { field: 'coupons', headerName: 'Coupons', width: 130 },
+        { field: 'coupons', headerName: 'Coupons', width: 100 },
         { field: 'percantage', headerName: 'Percantage', width: 130 },
         { field: 'expiry', headerName: 'Expiry', width: 130 },
         {
@@ -95,15 +95,17 @@ function Coupons(props) {
                         variant="outlined"
                         color="error"
                         onClick={() => handleDelete(params.row.id)}
-                        startIcon={<DeleteIcon />}
+                 
                     >
+                    Delete
                     </Button>
                     <Button
                         variant="outlined"
                         color="primary"
                         onClick={() => handleEdit(params.row)}
-                        startIcon={<EditIcon />}
+              
                     >
+                        Edit
                     </Button>
                 </>
             ),
