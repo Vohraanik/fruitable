@@ -37,9 +37,10 @@ function Layout(props) {
     { title: 'Vegetable', to: '/admin/vegetables', icon: <BakeryDiningIcon /> },
     { title: 'Category', to: '/admin/category', icon: <CategoryIcon /> },
     { title: 'Subcategory', to: '/admin/subcategory', icon: <CategoryIcon/> },
+    { title: 'Products', to: '/admin/products', icon: <AccountBalanceWalletIcon /> },
+    { title: 'Varients', to: '/admin/varients', icon: <AccountBalanceWalletIcon /> },
     { title: 'Facilities', to: '/admin/facilities', icon: <AddShoppingCartIcon /> },
     { title: 'Organic', to: '/admin/organic', icon: <AgricultureIcon /> },
-    { title: 'Products', to: '/admin/products', icon: <AccountBalanceWalletIcon /> },
     { title: 'Coupons', to: '/admin/coupons', icon: <AccountBalanceWalletIcon /> },
     { title: 'Contact', to: '/admin/contact', icon: <AccountBalanceWalletIcon /> },
   ];

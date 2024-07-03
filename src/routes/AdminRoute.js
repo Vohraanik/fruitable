@@ -15,6 +15,7 @@ import Products from '../admin/component/Products/Products';
 import Coupons from '../admin/component/Coupons/Coupons';
 import { FruitsProvider} from '../context/Friuts.context';
 import SubCategory from '../admin/component/SubCategory/SubCategory';
+import Varients from '../admin/component/Varients/Varients';
 
 
 
@@ -26,11 +27,14 @@ function AdminRoute(props) {
                     <Routes >
                         <Route element={<PrivateRoute />}>
                             <Route exact path="/fruits" element={<Fruits />} />
+                            <Route exact path="/vegetables" element={<Vegetables />} />
                             <Route exact path="/organic" element={<Organic />} />
                             <Route exact path="/products" element={<Products />} />
+                            <Route exact path="/varients" element={<Varients />} />
                             <Route exact path="/coupons" element={<Coupons />} />
                             <Route exact path="/category" element={<Category />} />
                             <Route exact path="/subCategory" element={<SubCategory/>} />
+
 
                         </Route>
                     </Routes>

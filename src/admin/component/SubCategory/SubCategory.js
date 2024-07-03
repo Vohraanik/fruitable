@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import { object, string } from 'yup';
+import { object, string, boolean } from 'yup';
 import { DataGrid } from '@mui/x-data-grid';
 import {
     Backdrop, Box, Button, CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle,
@@ -10,7 +10,6 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { addSubcategory, deletesubcategory, editsubcategory, getSubcategory } from '../../../redux/action/subcategory.action';
-import { render } from '@testing-library/react';
 import { getcategory } from '../../../redux/slice/category.slice';
 
 function Subcategories(props) {
@@ -25,7 +24,6 @@ function Subcategories(props) {
     useEffect(() => {
         dispatch(getcategory())
         dispatch(getSubcategory());
-       
     }, [dispatch]);
 
     const handleClickOpen = () => {
@@ -53,6 +51,7 @@ function Subcategories(props) {
         categories_id: string().required(),
         name: string().required(),
         description: string().required(),
+        is_active: boolean().required(),
     });
 
     const formik = useFormik({
@@ -60,6 +59,7 @@ function Subcategories(props) {
             categories_id: '',
             name: '',
             description: '',
+            is_active: true,
         },
         validationSchema: SubcategoriesSchema,
         onSubmit: (values, { resetForm }) => {
@@ -84,6 +84,7 @@ function Subcategories(props) {
             }
          },
         { field: 'description', headerName: 'Description', width: 200 },
+        { field: 'is_active', headerName: 'Active Status', width: 130, renderCell: (params) => (params.value ? 'Active' : 'Inactive') },
         {
             field: 'Action',
             headerName: 'Action',
@@ -174,6 +175,24 @@ function Subcategories(props) {
                                     error={touched.description && Boolean(errors.description)}
                                     helperText={touched.description && errors.description}
                                 />
+                                <FormControl fullWidth margin="dense">
+                                    <InputLabel id="is-active-label">Active Status</InputLabel>
+                                    <Select
+                                        labelId="is-active-label"
+                                        id="is_active"
+                                        name="is_active"
+                                        value={values.is_active}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        error={touched.is_active && Boolean(errors.is_active)}
+                                    >
+                                        <MenuItem value={true}>Active</MenuItem>
+                                        <MenuItem value={false}>Inactive</MenuItem>
+                                    </Select>
+                                    {touched.is_active && errors.is_active && (
+                                        <p style={{ color: 'red' }}>{errors.is_active}</p>
+                                    )}
+                                </FormControl>
                             </DialogContent>
                             <DialogActions>
                                 <Button onClick={handleClose}>Cancel</Button>
