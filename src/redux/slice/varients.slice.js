@@ -13,7 +13,6 @@ export const getVariants = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
             const response = await axios.get(ECOMMERCE_URL + "varients/list-varients");
-            console.log(response.data);
             return response.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
@@ -25,12 +24,15 @@ export const addVariant = createAsyncThunk(
     'variants/add',
     async (data, thunkAPI) => {
         try {
-            const response = await axios.post(ECOMMERCE_URL + 'varients/add-varients', data, {
+            const formData = new FormData();
+            for (const key in data) {
+                formData.append(key, data[key]);
+            }
+            const response = await axios.post(ECOMMERCE_URL + 'varients/add-varients', formData, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'multipart/form-data'
                 }
             });
-            console.log(response.data.data);
             return response.data.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
@@ -42,9 +44,13 @@ export const editVariant = createAsyncThunk(
     'variants/edit',
     async (data, thunkAPI) => {
         try {
-            const response = await axios.put(ECOMMERCE_URL + "varients/update-varients/" + data._id, data, {
+            const formData = new FormData();
+            for (const key in data) {
+                formData.append(key, data[key]);
+            }
+            const response = await axios.put(ECOMMERCE_URL + "varients/update-varients/" + data._id, formData, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'multipart/form-data'
                 }
             });
             return response.data;
@@ -89,7 +95,6 @@ const variantsSlice = createSlice({
                 state.error = null;
             })
             .addCase(addVariant.fulfilled, (state, action) => {
-                console.log(action.payload);
                 state.variants.push(action.payload);
                 state.isLoading = false;
             })
@@ -102,7 +107,6 @@ const variantsSlice = createSlice({
                 state.error = null;
             })
             .addCase(editVariant.fulfilled, (state, action) => {
-                console.log(action.payload.data._id);
                 state.variants = state.variants.map((v) =>
                     v._id === action.payload.data._id ? action.payload.data : v
                 );

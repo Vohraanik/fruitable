@@ -13,7 +13,6 @@ export const getproducts = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
             const response = await axios.get(ECOMMERCE_URL+ "products/list-products");
-            console.log(response.data);
             return response.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
@@ -105,7 +104,6 @@ const productsSlice = createSlice({
                 state.error = null;
             })
             .addCase(editproducts.fulfilled, (state, action) => {
-                console.log(action.payload.data._id);
                 state.products = state.products.map((v) =>
                     v._id == action.payload.data._id ? action.payload.data: v
                 );

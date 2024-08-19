@@ -21,8 +21,6 @@ function Coupons(props) {
     const dispatch = useDispatch();
 
     const coupons = useSelector(state => state.coupons);
-    console.log(coupons);
-
 
     useEffect(() => {
         dispatch(getCoupons())

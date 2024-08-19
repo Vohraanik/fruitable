@@ -9,6 +9,8 @@ import { subcategoryReducer } from "./subcategory.reducer";
 import categorySlice from "../slice/category.slice";
 import variantsSlice from "../slice/varients.slice"
 import productsSlice from "../slice/products.slice";
+import authSlice from "../slice/auth.slice";
+import alertSlice from "../slice/alert.slice";
 
 
 
@@ -23,4 +25,6 @@ export const rootReducer = combineReducers({
     category:categorySlice,
     products:productsSlice,
     varients:variantsSlice,
+    auth:authSlice,
+    alert:alertSlice
 })

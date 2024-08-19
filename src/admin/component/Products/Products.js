@@ -45,7 +45,6 @@ function Products() {
   };
 
   const handleEdit = (data) => {
-    console.log(data);
     formik.setValues(data);
     setOpen(true);
     setUpdate(true);
@@ -92,7 +91,6 @@ function Products() {
       if (update) {
         dispatch(editproducts(values));
       } else {
-        console.log(values);
         dispatch(addproducts(values));
       }
       resetForm();

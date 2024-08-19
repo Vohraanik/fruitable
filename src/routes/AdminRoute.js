@@ -19,6 +19,8 @@ import Varients from '../admin/component/Varients/Varients';
 
 
 
+
+
 function AdminRoute(props) {
     return (
         <div >
@@ -34,6 +36,7 @@ function AdminRoute(props) {
                             <Route exact path="/coupons" element={<Coupons />} />
                             <Route exact path="/category" element={<Category />} />
                             <Route exact path="/subCategory" element={<SubCategory/>} />
+
 
 
                         </Route>

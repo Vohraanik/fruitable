@@ -8,16 +8,20 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { configureStore } from './redux/Store';
 import { ThemeProvider } from "./context/Theme.context";
 import { ContactProvider } from "./context/contactContext";
+import { SnackbarProvider } from "notistack";
+import Alert from "./user/component/Alert/Alert";
 
 
 function App() {
   const { store, persistor } = configureStore();
   return (
     <>
-    <ContactProvider>
+    <SnackbarProvider>
+    <ContactProvider> 
     <ThemeProvider>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
+          <Alert/>
             <Routes>
               <Route exact path="/*" element={<UserRoute />} />
               <Route element={<PrivateRoute />}>
@@ -28,6 +32,8 @@ function App() {
         </Provider>
       </ThemeProvider>
     </ContactProvider>
+    </SnackbarProvider>
+  
      
     </>
   );

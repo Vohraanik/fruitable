@@ -29,7 +29,7 @@ function Category() {
     }, [dispatch]);
 
     const category = useSelector(state => state.category);
-    console.log(category);
+
 
     const categorySchema = object({
         name: string().required("Category is required").matches(/^[a-zA-Z'-\s]*$/, 'Invalid name'),

@@ -24,7 +24,6 @@ export const getcategory = createAsyncThunk(
 export const addcategory = createAsyncThunk(
     'category/add',
     async (data,thunkAPI) => {
-        console.log(data);
         try {
             const response = await axios.post(ECOMMERCE_URL+'categories/add-categories', data)
             return response.data
@@ -71,13 +70,11 @@ const categorySlice = createSlice({
         })
         
         builder.addCase(getcategory.rejected,(state,action)=>{
-            console.log(action);
             state.error = action.payload
             state.isLoading = false;
         })
 
         builder.addCase(getcategory.pending,(state,action)=>{
-            console.log(action);
             state.isLoading = true; 
             state.error = null           
         })
@@ -89,19 +86,16 @@ const categorySlice = createSlice({
         })
 
         builder.addCase(addcategory.rejected,(state,action)=>{
-            console.log(action.error);
             state.error = action.payload
             state.isLoading = false;
         })
 
         builder.addCase(addcategory.pending,(state,action)=>{
-            console.log(action);
             state.isLoading = true; 
             state.error = null           
         })
 
         builder.addCase(editcategory.fulfilled, (state, action) => {
-            console.log(action);
             state.category = state.category.map((v) => {
                 if (v._id === action.payload.data._id) {
                     return action.payload.data;
@@ -119,24 +113,20 @@ const categorySlice = createSlice({
         })
 
         builder.addCase(editcategory.pending,(state,action)=>{
-            console.log(action);
             state.isLoading = true; 
             state.error = null           
         })
 
         builder.addCase(deletecategory.fulfilled,(state,action)=>{
-            console.log(action);
             state.category = state.category.filter((v)=>v._id !== action.payload)
         })
 
         .addCase(deletecategory.rejected, (state, action) => {
-            console.log(action);
             state.error = action.payload
             state.isLoading = false;
         })
 
         builder.addCase(deletecategory.pending,(state,action)=>{
-            console.log(action);
             state.isLoading = true; 
             state.error = null           
         })

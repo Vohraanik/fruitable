@@ -1,18 +1,29 @@
 import React, { useContext } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import { ThemeContext } from '../../../context/Theme.context';
+import { logout } from '../../../redux/slice/auth.slice';
 
 function Header(props) {
   const cart = useSelector(state => state.cart)
-
+  const { isLogin, user } = useSelector(state => state.auth);
+  console.log(user);
+  
+  const dispatch = useDispatch();
 
   const theme = useContext(ThemeContext);
   console.log(theme);
 
   const handleTheme = () => {
     theme.toggleTheme(ThemeContext.theme);
+  }
+
+  const handleLogout = () => {  
+    console.log(user._id);
+    
+      
+    dispatch(logout(user._id));
   }
 
   const cartCount = cart.cart.reduce((acc, v) => acc + v.qty, 0)
@@ -52,6 +63,7 @@ function Header(props) {
                 <NavLink to={"/"} className="nav-item nav-link active">Home</NavLink>
                 <NavLink to={"/shop"} className="nav-item nav-link">Shop</NavLink>
                 <NavLink to={"/shop-detail"} className="nav-item nav-link">Shop Detail</NavLink>
+                <NavLink to={"/chat"} className="nav-item nav-link">chat</NavLink>
                 <div className={`nav-item dropdown ${theme.theme}`}>
                   <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                   <div className="dropdown-menu m-0 bg-secondary rounded-0">
@@ -70,9 +82,12 @@ function Header(props) {
                   <i className="fa fa-shopping-bag fa-2x" />
                   <span className="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style={{ top: '-5px', left: 15, height: 20, minWidth: 20 }}>{cartCount}</span>
                 </NavLink>
-                <a href="#" className="my-auto">
-                  <i className="fas fa-user fa-2x" />
-                </a>
+
+                {
+                  isLogin ? <button onClick={handleLogout}>Logout</button> : <NavLink to={"/login"} className="position-relative me-4 my-auto">
+                    <i className="fas fa-user fa-2x" />
+                  </NavLink>
+                }
 
               </div>
             </div>
